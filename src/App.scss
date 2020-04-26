@@ -1,0 +1,1015 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Quicksand|Source+Serif+Pro&display=swap');
+
+$Orange: #e8ab0a;
+$CornFlowerBlue: #79a2e7;
+$lightSkyblue: #b9d0fa;
+$MidnightBlue: #142c5c;
+$Lavender: #edf0fa;
+
+/*
+font-family: 'Quicksand', sans-serif;
+font-family: 'Amatic SC', cursive;
+font-family: 'Source Serif Pro', serif;
+
+
+
+
+SOMMAIRE
+
+01. GENERAL
+02. NAV
+03. LANDING PAGE
+04. SIGN IN PAGE
+05. REGISTER
+06. FORGOT PASSWORD
+07. ADD A PLACE
+08. EXPLORE
+09. HOMEPAGE
+10. ADMIN
+11. PROFILE
+12. SETTINGS
+*/
+
+/* 01. GENERAL */
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.icons {
+  padding-top: 5%;
+}
+
+.titleh1 {
+  text-align: center;
+  color: $CornFlowerBlue;
+  margin-top: 5% !important;
+}
+
+.container {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  outline: none;
+}
+
+.loader {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  p {
+    font-style: normal !important;
+    font-size: 3rem !important;
+    text-align: center;
+    color: #3fc3d0 !important;
+    margin-top: -3%;
+  }
+}
+h2 {
+  margin: calc(2rem - 0.14285714em) 0 1rem !important;
+}
+
+h1 {
+  text-align: center;
+  color: #79a2e7;
+  font-size: 2.5rem;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 4% !important;
+  margin-bottom: 3%;
+}
+
+/* 02. NAV */
+
+.LogoHeader {
+  flex-grow: 1;
+}
+.logo {
+  max-width: 200px;
+  flex-grow: 1;
+}
+
+.topNav,
+.LandingMenu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  li {
+    margin: 0.5% 3%;
+    list-style: none;
+    a,
+    .logOutBtn {
+      text-decoration: none;
+      color: inherit;
+      border: none;
+      font-size: 1.2rem;
+      background-color: inherit;
+      cursor: pointer;
+      font-weight: 300;
+    }
+  }
+}
+
+.signInBtn {
+  background-color: $MidnightBlue;
+  padding: 10px 25px;
+  border-radius: 20px;
+  color: white;
+
+  font-weight: 800;
+}
+
+/* 03. LANDING PAGE */
+
+.LandingMainPic {
+  grid-row-start: 2;
+  width: 100%;
+}
+
+.LandingHeader {
+  grid-template-columns: 100%;
+  display: grid;
+
+  h1 {
+    color: $MidnightBlue;
+    justify-self: center;
+    place-self: center;
+    align-self: center;
+    grid-row-start: 1;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: -6%;
+    margin-top: 3%;
+    span {
+      font-size: 1.3rem;
+      color: $CornFlowerBlue;
+    }
+  }
+}
+
+.Presentation {
+  display: inline-grid;
+  width: 100%;
+  grid-template-columns: 20% 20% 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  div {
+    margin-top: 2%;
+    padding: 2%;
+    border-radius: 5px;
+    height: 350px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+}
+.cardPic {
+  margin-top: 5%;
+  max-height: 200px;
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+.sectionTitle {
+  margin: 4% auto 5%;
+  font-size: 2.5rem;
+  text-align: center;
+  color: $CornFlowerBlue;
+}
+.footer {
+  width: 100%;
+  margin-top: 3%;
+}
+
+/* 04. SIGNIN PAGE */
+
+.signInLogo {
+  background-color: white;
+  border: none;
+  img {
+    max-width: 260px;
+    text-align: center;
+    justify-self: center;
+  }
+}
+
+.loginSection {
+  display: inline-grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  align-items: center;
+}
+
+.loginIllustration {
+  width: 80%;
+  text-align: center;
+  justify-self: center;
+  margin: 5% 3% 0 0;
+}
+.leftSection {
+  justify-self: center;
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 100px;
+    color: $CornFlowerBlue;
+    svg {
+      font-size: 3.5rem;
+    }
+  }
+}
+.signInForm {
+  margin: 6% auto 10%;
+  text-align: center;
+  justify-self: center;
+  input {
+    margin: 2%;
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 2% 4%;
+    outline: none;
+  }
+}
+.enterBtn {
+  margin: 6% auto 10%;
+  text-align: center;
+  justify-self: center;
+  width: 300px;
+  height: 40px;
+  background-color: $lightSkyblue;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.iconsForm {
+  display: flex;
+  flex-direction: column;
+  margin: 2% auto;
+}
+
+.forgotPasswordPara,
+.NoAccountPara {
+  text-align: center;
+}
+.forgotPasswordPara {
+  margin-top: 5%;
+}
+/* 05. REGISTER */
+
+.registerImg,
+.forgotPasswordImg {
+  padding-top: 3%;
+  margin-top: 8%;
+  max-width: 600px;
+  width: 100%;
+  justify-self: center;
+}
+
+.flex_register,
+.DisplayForgotPassword {
+  margin-top: 3%;
+  width: 100%;
+  display: inline-grid;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  align-items: center;
+  div {
+    h1,
+    .icons {
+      font-size: 2rem;
+      color: $Orange;
+    }
+    form {
+      width: 100%;
+      justify-self: start;
+      input {
+        width: 300px;
+        height: 40px;
+        margin: 1%;
+        border: 1px solid $lightSkyblue;
+        border-radius: 10px;
+        padding: 1% 2%;
+        outline: none;
+        font-size: 1rem;
+      }
+      button {
+        margin-top: 2%;
+        width: 300px;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/* EMAIL CONFIRMATION */
+
+.emailConfirmationScreen {
+  margin: 0 10%;
+  h1 {
+    margin-bottom: 0;
+  }
+  h4 {
+    color: $MidnightBlue;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  img {
+    max-width: 500px;
+    float: right;
+    clear: both;
+    overflow: hidden;
+  }
+  p {
+    margin: 4% 70% 5% 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-align: justify;
+  }
+  button {
+    background-color: $CornFlowerBlue;
+    color: white;
+    font-size: 1.2rem;
+    width: 18%;
+    height: 7%;
+    padding: 1%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+}
+
+/* FORGOT PASSWORD */
+
+.forgotPasswordImg {
+  max-width: 600px;
+}
+.DisplayForgotPassword {
+  display: inline-grid;
+}
+
+/* ADD A PLACE */
+
+.addPlaceForm {
+  text-align: center;
+  margin-top: 3%;
+  h1 {
+    color: $CornFlowerBlue;
+    margin-bottom: 2%;
+    font-size: 2.5rem;
+  }
+  p {
+    font-style: italic;
+    color: darkgrey;
+    margin-bottom: 3%;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    input {
+      width: 500px;
+      height: 40px;
+      justify-content: flex-end;
+      margin-left: 3%;
+      margin-bottom: 1%;
+      padding: 1%;
+      outline: none;
+      border: 1px solid #d2d2d2;
+      border-radius: 5px;
+    }
+    textarea {
+      width: 500px;
+      height: 100px;
+      justify-content: flex-end;
+      margin-left: 3%;
+      resize: vertical;
+      padding: 1%;
+      outline: none;
+      border: 1px solid #d2d2d2;
+      border-radius: 5px;
+    }
+    label {
+      display: inline-block;
+      width: 140px;
+      text-align: right;
+      vertical-align: middle;
+    }
+    .vertical_align {
+      padding-top: 1%;
+      vertical-align: top !important;
+    }
+    button {
+      width: 200px;
+      display: block;
+      margin: 3% auto;
+      height: 50px;
+      padding: 1%;
+      outline: none;
+      border: 1px solid #d2d2d2;
+      border-radius: 5px;
+    }
+  }
+}
+.DropImg {
+  border: none !important;
+}
+
+/* EXPLORE PLACES */
+
+.explore_container {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    color: $CornFlowerBlue;
+    font-size: 2.5rem;
+  }
+}
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    border: none;
+    background-color: white;
+    svg {
+      font-size: 20px;
+    }
+  }
+}
+.SearchBar {
+  width: 600px;
+  height: 35px;
+  padding: 0 1%;
+  border: 1px solid $MidnightBlue;
+  border-radius: 5px;
+  outline: none;
+}
+
+/*EXPLORE LIST NEW */
+
+.exploreList {
+  margin-top: 3%;
+  h1 {
+    margin-bottom: 5%;
+  }
+  ul {
+    li {
+      background: linear-gradient(
+        90deg,
+        rgba(238, 243, 252, 0) 0%,
+        rgba(238, 243, 252, 0.8) 100%
+      );
+      padding: 1% 2%;
+      border-radius: 10px;
+      list-style: none;
+      margin: 25px 0;
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 1.2rem;
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.Explore_list_flag {
+  max-width: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.Explore_List_Arrow {
+  display: flex;
+  text-align: right;
+  align-self: flex-end;
+  button {
+    background: transparent !important;
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+}
+
+.Explore_searchBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+  input {
+    border: 1px solid lightgray;
+    width: 70%;
+    margin-right: 2%;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    padding: 1%;
+  }
+  svg {
+    font-size: 1.3rem;
+    margin-top: 5px;
+  }
+}
+
+/* Explore modal */
+
+.ui.modal > .content > .description {
+  display: flex !important;
+}
+
+.modalFlag {
+  img {
+    border-radius: 10px;
+  }
+}
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.ModalPlane {
+  transform: rotate(-45deg);
+  margin-right: 3%;
+}
+
+.modalTitle {
+  margin: 0 !important;
+  color: $CornFlowerBlue;
+}
+.modalLi {
+  li {
+    list-style: none;
+    ::before {
+      content: '\2022';
+      color: $Orange;
+      display: inline-block;
+      width: 1.2em;
+      margin-left: -1em;
+    }
+    span {
+      font-weight: 800;
+      color: $Orange;
+    }
+  }
+}
+
+/* HOMEPAGE */
+
+.homeContainer {
+  h1 {
+    margin-top: 4%;
+    font-size: 2.5rem;
+    color: $CornFlowerBlue;
+    text-align: center;
+  }
+}
+
+.placeDisplay {
+  width: 100%;
+  display: inline-grid;
+  margin: 1% 8%;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-template-rows: auto;
+  grid-column-gap: 2%;
+  grid-row-gap: 35px;
+
+  li {
+    list-style: none;
+    border: 1px solid #79a2e7;
+    align-self: center;
+    padding: 5%;
+    border-radius: 5px;
+  }
+}
+
+.homeViewImg {
+  width: auto;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.floatRight {
+  float: right;
+  clear: both;
+  overflow: hidden;
+}
+
+/* HOMEPAGE LIST DESIGN (delete previous in case list design is better. othersise delete below*/
+
+.adminListTable {
+  width: 80%;
+  display: block;
+  margin: 1% auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+    li{
+    margin: 2%;
+    list-style-type: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding-bottom: 1%;
+    }
+  thead {
+    border-bottom: 2px solid $CornFlowerBlue;
+    margin-bottom: 2%;
+    tr {
+      padding: 2% 0;
+      td {
+        color: $CornFlowerBlue;
+        font-size: 18px;
+      }
+    }
+  }
+  img {
+    object-fit: cover;
+    width: 250px;
+    height: 200px;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  p {
+    padding: 0 5%;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.homeLink {
+  p {
+    text-align: right;
+    margin: 0;
+  }
+}
+.homePageHr {
+  background-color: lightgray;
+  width: 100%;
+  height: 1px;
+  margin: 2% 0;
+}
+
+.bold {
+  font-weight: bold;
+  color: $CornFlowerBlue;
+}
+
+/* 10. ADMIN */
+
+.admin_container {
+  margin: 2% 10%;
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #79a2e7;
+  }
+  p {
+    text-align: center;
+    color: grey;
+    font-style: italic;
+    margin-bottom: 2%;
+  }
+  ul {
+    li {
+      span {
+        margin-right: 2%;
+      }
+    }
+  }
+}
+.usersList {
+  margin-left: 20%;
+}
+
+.adminListTable {
+  tr {
+    td {
+      min-width: 300px;
+    }
+    .detailsBtn {
+      min-width: 100px !important;
+    }
+  }
+}
+.btnSendPassword {
+  background-color: $CornFlowerBlue;
+  color: white;
+}
+.btnDeleteUser,
+.deleteAccountBtn {
+  background-color: #c23f3e;
+  color: white;
+}
+
+.AdminUserSingle {
+  div {
+    margin-top: 3%;
+    span {
+      margin: 4%;
+    }
+  }
+}
+.userAdminList {
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.BtnSendPasswordReset,
+.BtnDeleteAccount {
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.BtnSendPasswordReset {
+  background-color: $CornFlowerBlue;
+  color: white;
+}
+.BtnDeleteAccount {
+  background-color: brown;
+  color: white;
+}
+
+/* 11. PROFILE */
+
+.tab-container {
+  width: 70%;
+  display: block;
+  margin: 2% auto;
+}
+
+.ui.secondary.pointing.menu .item {
+  margin-top: 3%;
+  width: 50%;
+  .item {
+    text-align: center !important;
+  }
+}
+.ui.secondary.pointing.menu .active.item {
+  text-align: center !important;
+  align-items: center;
+  display: flex;
+  color: $CornFlowerBlue !important;
+  border-color: $CornFlowerBlue !important;
+  font-weight: normal !important;
+}
+
+.Avatar {
+  max-width: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.headerText {
+  flex-direction: column;
+}
+.Profile_userName {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+.settingsLinks {
+  text-align: right;
+}
+
+.profile_icon {
+  color: $MidnightBlue;
+  font-size: 20px;
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+/* 12. SETTINGS */
+
+.settingsContainer {
+  margin-top: 3%;
+}
+.DisplayForgotPassword {
+  margin: 2% 0;
+}
+.settingsh2 {
+  color: $CornFlowerBlue;
+}
+
+.settingsButton {
+  border-radius: 5px;
+  width: 50%;
+  height: 30px;
+  padding: 0 1%;
+  outline: none;
+  margin: 1% 1% 1% 0;
+}
+
+.signInMethods {
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      margin: 1% 0;
+      button {
+        border-radius: 5px;
+        text-align: left;
+        padding: 5px 0 5px 6px;
+        width: 200px;
+        outline: none;
+      }
+    }
+  }
+}
+
+.passwordExplain {
+  font-style: italic;
+  color: grey;
+}
+.settingsInput {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 50%;
+  height: 30px;
+  padding: 0 1%;
+  outline: none;
+  margin: 1% 1% 1% 0;
+}
+.SettingsFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.passwordForms {
+  border-right: 1px solid grey;
+  padding-right: 20%;
+}
+.settingsButtons {
+  li {
+    list-style: none;
+    button {
+      width: 100%;
+      height: 30px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      margin: 2% 0;
+    }
+  }
+}
+
+.profileInfos {
+  input,
+  textarea {
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    padding: 0 1%;
+    outline: none;
+    margin: 1% 1% 1% 0;
+  }
+}
+.bioTextArea {
+  height: 80px !important;
+  resize: vertical;
+  padding-top: 5px !important;
+}
+
+.settingsSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .profileInfos {
+    padding-right: 20%;
+  }
+}
+.deleteAccountBtn {
+  width: 100%;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  margin: 2% 0;
+}
+
+.extra {
+  margin-bottom: 2%;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.extraBtn {
+  margin: 0.5% 0;
+  border-radius: 5px;
+  text-align: left;
+  padding: 5px 0 5px 6px;
+  width: 200px;
+  outline: none;
+}
+
+/* PLACE ITEM SINGLE */
+
+.placeItemContainer {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  h2 {
+    color: $MidnightBlue;
+    font-weight: bold;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    section {
+      img {
+        max-width: 500px;
+        border-radius: 15px;
+      }
+      p {
+        padding-left: 5%;
+        span {
+          color: $CornFlowerBlue;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}
+.ratingRadioButton {
+  display: none;
+}
+.star {
+  cursor: pointer;
+}
+
+/*Information  */
+
+.compulsoryMentions {
+  margin: 2% auto;
+  padding: 1% 3%;
+  display: block;
+  h1,
+  h2 {
+    text-align: center;
+    color: $CornFlowerBlue;
+    font-size: 2.2rem;
+    margin: 4%;
+  }
+  h3,
+  h4 {
+    color: $MidnightBlue;
+  }
+  h5,
+  h6 {
+    color: $Orange;
+    margin-left: 2%;
+    p {
+      margin-left: 2% !important;
+    }
+  }
+  p {
+    margin-top: 1%;
+    text-align: justify;
+  }
+}

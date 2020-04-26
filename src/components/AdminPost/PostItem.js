@@ -22,7 +22,7 @@ class UserItem extends Component {
 
     this.unsubscribe = this.props.firebase
       .user(this.props.match.params.id)
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         this.setState({
           user: snapshot.data(),
           loading: false,
@@ -67,8 +67,7 @@ class UserItem extends Component {
               </button>
             </span>
             <span>
-              <button type="button"
-              className="BtnDeleteAccount">
+              <button type="button" className="BtnDeleteAccount">
                 Delete the account
               </button>
             </span>

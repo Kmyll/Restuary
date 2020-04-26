@@ -1,19 +1,22 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { withAuthorization, withEmailVerification } from '../Session';
-import Messages from '../Messages';
+import { PlaceList, PlaceItem } from '../Places';
+import * as ROUTES from '../../constants/routes';
 
 const HomePage = () => (
   <div>
-    <h1>Home Page</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
-
-    <Messages />
+    <h1>Homepage</h1>
+    <Switch>
+      <Route exact path={ROUTES.HOME_DETAILS} component={PlaceItem} />
+      <Route exact path={ROUTES.HOME} component={PlaceList} />
+    </Switch>
   </div>
 );
 
-const condition = authUser => !!authUser;
+const condition = (authUser) => !!authUser;
 
 export default compose(
   withEmailVerification,

@@ -1,0 +1,5 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true
+}

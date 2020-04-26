@@ -2,18 +2,22 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+const settings = {timestampsInSnapshots: true};
+
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  apiKey: "AIzaSyDxHpeYlUy0J7sSydE1XX6jjBo_B3zjbGY",
+  authDomain: "firestoreboilerplate.firebaseapp.com",
+  databaseURL: "https://firestoreboilerplate.firebaseio.com",
+  projectId: "firestoreboilerplate",
+  storageBucket: "firestoreboilerplate.appspot.com",
+  messagingSenderId: "457425219732",
 };
+
 
 class Firebase {
   constructor() {
-    app.initializeApp(config);
+    /*app.initializeApp(config);*/
+    app.firestore().settings(settings);
 
     /* Helper */
 
@@ -55,7 +59,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: 'http://localhost:3000/home'
     });
 
   doPasswordUpdate = password =>
@@ -103,6 +107,7 @@ class Firebase {
   message = uid => this.db.doc(`messages/${uid}`);
 
   messages = () => this.db.collection('messages');
+
 }
 
 export default Firebase;

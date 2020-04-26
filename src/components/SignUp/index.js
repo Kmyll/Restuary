@@ -4,11 +4,15 @@ import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+import register from '../../assets/img/register.png';
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
+  <div className="flex_register">
+    <img className="registerImg" src={register} />
+    <div>
+      <h1>SignUp</h1>
+      <SignUpForm />
+    </div>
   </div>
 );
 
@@ -110,6 +114,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Full Name"
         />
+        <br />
         <input
           name="email"
           value={email}
@@ -117,6 +122,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Email Address"
         />
+        <br />
         <input
           name="passwordOne"
           value={passwordOne}
@@ -124,6 +130,7 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Password"
         />
+        <br />
         <input
           name="passwordTwo"
           value={passwordTwo}
@@ -131,7 +138,8 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <label>
+        <br />
+{      /*  <label>
           Admin:
           <input
             name="isAdmin"
@@ -139,7 +147,8 @@ class SignUpFormBase extends Component {
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
           />
-        </label>
+        </label> */}
+        <br />
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>
@@ -151,7 +160,7 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <p>
+  <p className="NoAccountPara">
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );

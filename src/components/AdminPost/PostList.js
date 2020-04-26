@@ -5,13 +5,13 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { FcCheckmark } from 'react-icons/fc';
 
-class UserList extends Component {
+class PlaceList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: false,
-      users: [],
+      places: [],
     };
   }
 
@@ -19,16 +19,16 @@ class UserList extends Component {
     this.setState({ loading: true });
 
     this.unsubscribe = this.props.firebase
-      .users()
-      .onSnapshot(snapshot => {
-        let users = [];
+      .places()
+      .onSnapshot((snapshot) => {
+        let places = [];
 
-        snapshot.forEach(doc =>
-          users.push({ ...doc.data(), uid: doc.id }),
+        snapshot.forEach((doc) =>
+          places.push({ ...doc.data(), uid: doc.id }),
         );
 
         this.setState({
-          users,
+          places,
           loading: false,
         });
       });
@@ -39,11 +39,11 @@ class UserList extends Component {
   }
 
   render() {
-    const { users, loading } = this.state;
+    const { places, loading } = this.state;
 
     return (
       <div>
-        <h2>Users</h2>
+        <h2>Places</h2>
         {loading && (
           <div className="loader">
             <img src={dino} />
@@ -60,18 +60,18 @@ class UserList extends Component {
                 <td className="detailsBtn">Details</td>
               </tr>
             </thead>
-            {users.map((user) => (
-              <tbody key={user.uid}>
+            {places.map((place) => (
+              <tbody key={place.uid}>
                 <tr>
-                  <td>{user.uid}</td>
-                  <td>{user.email}</td>
-                  <td>{user.username}</td>
+                  <td>{place.uid}</td>
+                  <td>{place.name}</td>
+                  <td>{place.country}</td>
                   <td className="detailsBtn">
                     {' '}
                     <Link
                       to={{
-                        pathname: `${ROUTES.ADMIN}/${user.uid}`,
-                        state: { user },
+                        pathname: `${ROUTES.ADMINPLACES_DETAILS}/${place.uid}`,
+                        state: { place },
                       }}
                     >
                       <FcCheckmark />
@@ -87,4 +87,4 @@ class UserList extends Component {
   }
 }
 
-export default withFirebase(UserList);
+export default withFirebase(PlaceList);

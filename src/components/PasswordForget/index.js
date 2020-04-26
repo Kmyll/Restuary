@@ -4,10 +4,20 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import forgotPassword from '../../assets/img/forgotPassword.png';
+import { FaLock } from 'react-icons/fa';
+
 const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
+  <div className="DisplayForgotPassword">
+    <img className="forgotPasswordImg" src={forgotPassword} />
+    <div>
+      <h1>
+        {' '}
+        <FaLock />
+         Reset your password
+      </h1>
+      <PasswordForgetForm />
+    </div>
   </div>
 );
 
@@ -48,26 +58,37 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <React.Fragment>
+        <p className="passwordExplain">
+          (Please choose this option if you don't remember your
+          password)
+        </p>
+        <form onSubmit={this.onSubmit}>
+          <input
+            className="settingsInput"
+            name="email"
+            value={this.state.email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+          /> <br/>
+          <button
+            disabled={isInvalid}
+            type="submit"
+            className="settingsButton"
+          >
+            Reset My Password
+          </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
+      </React.Fragment>
     );
   }
 }
 
 const PasswordForgetLink = () => (
-  <p>
+  <p className="forgotPasswordPara">
     <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
   </p>
 );

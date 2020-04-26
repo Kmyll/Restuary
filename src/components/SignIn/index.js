@@ -7,15 +7,25 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import google from '../../assets/img/google.png';
+import facebook from '../../assets/img/facebook.png';
+import login from '../../assets/img/login.png';
+import { FaSignInAlt } from 'react-icons/fa';
+
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
-    <PasswordForgetLink />
-    <SignUpLink />
+  <div className="loginSection">
+    <section className="leftSection">
+      <h1>
+        <FaSignInAlt className="icons" /> SignIn
+      </h1>
+      <SignInForm />
+      <SignInGoogle />
+      <SignInFacebook />
+      {/* <SignInTwitter /> */}
+      <PasswordForgetLink />
+      <SignUpLink />
+    </section>
+    <img className="loginIllustration" src={login} />
   </div>
 );
 
@@ -68,7 +78,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="signInForm" onSubmit={this.onSubmit}>
         <input
           name="email"
           value={email}
@@ -83,7 +93,11 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button
+          className="enterBtn"
+          disabled={isInvalid}
+          type="submit"
+        >
           Sign In
         </button>
 
@@ -133,8 +147,11 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
+      <form className="iconsForm" onSubmit={this.onSubmit}>
+        <button className="signInLogo" type="submit">
+          {' '}
+          <img src={google} />
+        </button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -182,8 +199,10 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Facebook</button>
+      <form className="iconsForm" onSubmit={this.onSubmit}>
+        <button className="signInLogo" type="submit">
+          <img src={facebook} />
+        </button>
 
         {error && <p>{error.message}</p>}
       </form>
