@@ -12,9 +12,9 @@ const AdminPage = () => (
   <div className="admin_container">
     <h1>
       <FaUsersCog />
-      Admin
+      Admin Users
     </h1>
-    <p>The Admin Page is accessible by every signed in admin user.</p>
+    <p>From this interface, you can manage all the users.</p>
 
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />

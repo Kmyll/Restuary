@@ -43,7 +43,6 @@ class UserList extends Component {
 
     return (
       <div>
-        <h2>Users</h2>
         {loading && (
           <div className="loader">
             <img src={dino} />

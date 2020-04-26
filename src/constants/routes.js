@@ -5,9 +5,10 @@ export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/pw-forget';
 export const ADMIN = '/admin';
-export const ADMINPLACES = '/AdminPlaces';
-export const ADMINPLACES_DETAILS = '/AdminPlaces';
 export const ADMIN_DETAILS = '/admin/:id';
+
+export const ADMINPLACES = '/AdminPlaces';
+export const ADMINPLACES_DETAILS = '/AdminPlaces/:id';
 export const ADDPLACE = '/addPlace';
 export const PROFILE = '/profile';
 export const HOME_DETAILS = '/home/:id';
