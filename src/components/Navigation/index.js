@@ -7,10 +7,11 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import Logo from '../../assets/img/logo.png';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
+    {(authUser) =>
       authUser ? (
         <NavigationAuth authUser={authUser} />
       ) : (
@@ -27,33 +28,38 @@ const NavigationAuth = ({ authUser }) => (
         <img className="logo" src={Logo} />
       </Link>
     </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ADDPLACE}>Add a place</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    {!!authUser.roles[ROLES.ADMIN] && (
+    <div className="menuBurgerNav">
       <li>
-        <Link to={ROUTES.ADMIN}>Admin</Link>
+        <Link to={ROUTES.HOME}>Home</Link>
       </li>
-    )}
-    {!!authUser.roles[ROLES.ADMIN] && (
       <li>
-        <Link to={ROUTES.ADMINTEST}>Admintest</Link>
+        <Link to={ROUTES.ADDPLACE}>Add a place</Link>
       </li>
-    )}
-    <li>
-      <SignOutButton />
-    </li>
+      <li>
+        <Link to={ROUTES.SETTINGS}>Account</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.EXPLORE}>Explore</Link>
+      </li>
+      {!!authUser.roles[ROLES.ADMIN] && (
+        <li>
+          <Link to={ROUTES.ADMINISTRATION}>Admin</Link>
+        </li>
+      )}
+      <li>
+        <SignOutButton />
+      </li>
+    </div>
+    <label className="burgerMenu" for="toggle">
+      <GiHamburgerMenu />
+    </label>
+    <input className="burgerToggle" type="checkbox" id="toggle" />
   </ul>
 );
 
 const NavigationNonAuth = () => (
   <ul className="LandingMenu">
+    
     <li className="LogoHeader">
       <Link to={ROUTES.LANDING}>
         <img className="logo" src={Logo} />
@@ -62,6 +68,10 @@ const NavigationNonAuth = () => (
     <li className="signInBtn">
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
+    <label className="burgerMenu" for="toggle">
+      <GiHamburgerMenu />
+    </label>
+    <input className="burgerToggle" type="checkbox" id="toggle" />
   </ul>
 );
 

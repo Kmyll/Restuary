@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 import {Link} from 'react-router-dom'
-
+import { FaKey } from 'react-icons/fa';
+import { IoMdHelpCircleOutline } from 'react-icons/io';
 import {
   AuthUserContext,
   withAuthorization,
@@ -30,19 +31,38 @@ const SIGN_IN_METHODS = [
   },
 ];
 
-const SettingsPage = () => (
+const SettingsPage = ({}) => (
   <AuthUserContext.Consumer>
-    {authUser => (
-      <div>
+    {(authUser) => (
+      <div className="container settingsContainer">
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
-     
       </div>
     )}
   </AuthUserContext.Consumer>
 );
+
+class Extra extends Component {
+  render() {
+    return (
+      <section className="extra">
+        <h2 className="settingsh2">
+          <IoMdHelpCircleOutline />
+          Information
+        </h2>
+        <div>
+          <Link to="./Information">
+            {' '}
+            <button className="extraBtn ">Information</button>
+          </Link>
+        </div>
+      </section>
+    );
+  }
+}
+
 
 class LoginManagementBase extends Component {
   constructor(props) {
@@ -97,10 +117,12 @@ class LoginManagementBase extends Component {
     const { activeSignInMethods, error } = this.state;
 
     return (
-      <div>
-        Sign In Methods:
+      <div className="signInMethods">
+        <h2 className="settingsh2">
+          <FaKey /> Sign In Methods:
+        </h2>
         <ul>
-          {SIGN_IN_METHODS.map(signInMethod => {
+          {SIGN_IN_METHODS.map((signInMethod) => {
             const onlyOneLeft = activeSignInMethods.length === 1;
             const isEnabled = activeSignInMethods.includes(
               signInMethod.id,

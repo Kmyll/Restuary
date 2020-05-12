@@ -6,6 +6,18 @@ import * as ROUTES from '../../constants/routes';
 import { FcCheckmark } from 'react-icons/fc';
 import firebase from '../Firestore';
 import { FcDeleteDatabase } from 'react-icons/fc';
+import { GoSearch } from 'react-icons/go';
+
+function searchingFor(term) {
+  return function (name) {
+    return (
+      name.name.toLowerCase().includes(term.toLowerCase()) ||
+      name.country.toLowerCase().includes(term.toLowerCase()) ||
+      name.continent.toLowerCase().includes(term.toLowerCase()) ||
+      !term
+    );
+  };
+}
 
 class PlaceList extends Component {
   constructor(props) {
@@ -14,6 +26,7 @@ class PlaceList extends Component {
     this.state = {
       loading: false,
       places: [],
+      term: '',
     };
   }
 
@@ -38,20 +51,40 @@ class PlaceList extends Component {
       });
   }
 
+  // Remove the 'capital' field from the document
+  removePlace = () => {
+    const db = firebase.firestore();
+    db.collection('places').remove();
+  };
+
   /*  componentWillUnmount() {
     this.unsubscribe();
   } */
 
-  render() {
-    const { places, loading } = this.state;
+  //Searchbar
+  searchHandler = (event) => {
+    this.setState({ term: event.target.value });
+  };
 
+  render() {
+    const { places, loading, term } = this.state;
+    console.log('props', this.state);
     return (
       <div>
-        {loading && (
+        {loading ? (
           <div className="loader">
             <img src={dino} />
             <p>Loading...</p>
           </div>
+        ) : (
+          <form className="Explore_searchBar">
+            <input
+              type="text"
+              onChange={this.searchHandler}
+              value={term}
+            />
+            <GoSearch />
+          </form>
         )}
         <ul className="userAdminList">
           <table className="adminListTable">
@@ -70,7 +103,7 @@ class PlaceList extends Component {
                   <td>{place.country}</td>
                   <td>{place.continent}</td>
                   <td className="detailsBtn">
-                    <button>
+                    <button onClick={this.removePlace}>
                       <FcDeleteDatabase />
                     </button>
                   </td>

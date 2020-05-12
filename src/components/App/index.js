@@ -14,7 +14,8 @@ import AddPlacePage from '../AddPlace';
 import ProfilePage from '../Profile';
 import SettingsPage from '../Settings';
 import WelcomePage from '../Welcome';
-import AdminTestPage from '../AdminTest';
+import AdministrationPage from '../Administration';
+import ExplorePage from '../Explore';
 
 import * as ROUTES from '../../constants/routes';
 
@@ -31,7 +32,11 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PROFILE} component={ProfilePage} />
-      <Route path={ROUTES.ADMINTEST} component={AdminTestPage} />
+      <Route path={ROUTES.EXPLORE} component={ExplorePage} />
+      <Route
+        path={ROUTES.ADMINISTRATION}
+        component={AdministrationPage}
+      />
       <Route
         path={ROUTES.PASSWORD_FORGET}
         component={PasswordForgetPage}

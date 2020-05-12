@@ -59,6 +59,10 @@ class PasswordForgetFormBase extends Component {
 
     return (
       <React.Fragment>
+        <h2 className="settingsh2">
+          {' '}
+          <FaLock /> Reset your password
+        </h2>
         <p className="passwordExplain">
           (Please choose this option if you don't remember your
           password)
@@ -71,7 +75,8 @@ class PasswordForgetFormBase extends Component {
             onChange={this.onChange}
             type="text"
             placeholder="Email Address"
-          /> <br/>
+          />{' '}
+          <br />
           <button
             disabled={isInvalid}
             type="submit"
@@ -79,7 +84,6 @@ class PasswordForgetFormBase extends Component {
           >
             Reset My Password
           </button>
-
           {error && <p>{error.message}</p>}
         </form>
       </React.Fragment>

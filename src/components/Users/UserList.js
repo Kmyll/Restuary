@@ -4,26 +4,37 @@ import dino from '../../assets/img/dino.gif';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { FcCheckmark } from 'react-icons/fc';
+import { GoSearch } from 'react-icons/go';
+
+function searchingFor(term) {
+  return function (name) {
+    return (
+      name.uid.toLowerCase().includes(term.toLowerCase()) ||
+      name.email.toLowerCase().includes(term.toLowerCase()) ||
+      name.username.toLowerCase().includes(term.toLowerCase()) ||
+      !term
+    );
+  };
+}
 
 class UserList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       loading: false,
       users: [],
+      term: ''
     };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
-
     this.unsubscribe = this.props.firebase
       .users()
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         let users = [];
 
-        snapshot.forEach(doc =>
+        snapshot.forEach((doc) =>
           users.push({ ...doc.data(), uid: doc.id }),
         );
 
@@ -38,16 +49,30 @@ class UserList extends Component {
     this.unsubscribe();
   }
 
+  //Searchbar
+  searchHandler = (event) => {
+    this.setState({ term: event.target.value });
+  };
+
   render() {
-    const { users, loading } = this.state;
+    const { users, loading, term } = this.state;
 
     return (
       <div>
-        {loading && (
+        {loading ? (
           <div className="loader">
             <img src={dino} />
             <p>Loading...</p>
           </div>
+        ) : (
+          <form className="Explore_searchBar">
+            <input
+              type="text"
+              onChange={this.searchHandler}
+              value={term}
+            />
+            <GoSearch />
+          </form>
         )}
         <ul className="userAdminList">
           <table className="adminListTable">
@@ -59,7 +84,7 @@ class UserList extends Component {
                 <td className="detailsBtn">Details</td>
               </tr>
             </thead>
-            {users.map((user) => (
+            {users.filter(searchingFor(term)).map((user) => (
               <tbody key={user.uid}>
                 <tr>
                   <td>{user.uid}</td>

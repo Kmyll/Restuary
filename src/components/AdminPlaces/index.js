@@ -8,7 +8,7 @@ import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import { FaUsersCog } from 'react-icons/fa';
 
-const AdminPlacesPage = () => (
+const Administration = () => (
   <div className="admin_container">
     <h1>
       <FaUsersCog />
@@ -33,4 +33,4 @@ const condition = (authUser) =>
 export default compose(
   withEmailVerification,
   withAuthorization(condition),
-)(AdminPlacesPage);
+)(Administration);

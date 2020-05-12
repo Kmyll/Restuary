@@ -60,6 +60,38 @@ class PlaceList extends Component {
       .catch((error) => console.log(error));
   }
 
+  //Comments
+  addCommentToPlace1 = async () => {
+    const newCommentRef = await firebase
+      .firestore()
+      .collection('commentaires')
+      .add({
+        id: Date.now(),
+        message: 'Hello sweetie !',
+      });
+
+    const placeID = 'thKu6QtG6lbLOHIuDqnQ'; // en admettant que tu l'ai déjà sous la main
+    const place = await firebase
+      .firestore()
+      .collection('places')
+      .doc(placeID)
+      .get()
+      .then((p) => p.data());
+
+    if (place.commentaires instanceof Array) {
+      place.commentaires.push(newCommentRef);
+    } else {
+      place.commentaires = [newCommentRef];
+    }
+
+    await firebase
+      .firestore()
+      .collection('places')
+      .doc(placeID)
+      .set(place);
+    console.log('commentaire ajouté !');
+  };
+
   //Searchbar
   searchHandler = (event) => {
     this.setState({ term: event.target.value });

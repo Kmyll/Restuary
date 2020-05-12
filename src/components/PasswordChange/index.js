@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { FaUnlockAlt } from 'react-icons/fa';
 import { withFirebase } from '../Firebase';
 
 const INITIAL_STATE = {
@@ -41,27 +41,41 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <React.Fragment>
+        <h2 className="settingsh2">
+          <FaUnlockAlt /> Change your password
+        </h2>
+        <p className="passwordExplain">
+          (Please choose this option if you remember your password)
+        </p>
+        <form onSubmit={this.onSubmit}>
+          <input
+            className="settingsInput"
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="New Password"
+          />
+          <input
+            className="settingsInput"
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm New Password"
+          />
+          <button
+            disabled={isInvalid}
+            type="submit"
+            className="settingsButton"
+          >
+            Reset My Password
+          </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
+      </React.Fragment>
     );
   }
 }

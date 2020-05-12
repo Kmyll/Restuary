@@ -14,4 +14,5 @@ export const PROFILE = '/profile';
 export const HOME_DETAILS = '/home/:id';
 export const SETTINGS = '/settings';
 export const WELCOME = '/welcome';
-export const ADMINTEST = '/AdminTest';
+export const ADMINISTRATION = '/Administration';
+export const EXPLORE = '/Explore';

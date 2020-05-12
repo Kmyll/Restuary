@@ -101,9 +101,9 @@ export default class placeItem extends Component {
                            <hr />
                            <div>
                              <section>
-                               <img src={place.image} />
+                               <img src={place.imageURL} />
                              </section>
-                             <section>
+                             <section className="TextDisplay">
                                <p>
                                  <span>Country:</span> {place.country}
                                </p>
@@ -115,7 +115,7 @@ export default class placeItem extends Component {
                                  <span>Description:</span>{' '}
                                  {place.description}
                                </p>
-                               <button
+                           { /*   <button
                                  onClick={() =>
                                    this.addCommentToPlace1()
                                  }
@@ -135,7 +135,7 @@ export default class placeItem extends Component {
                                        );
                                      },
                                    )}
-                               </li>
+                               </li> */}
                              </section>
                            </div>
                          </div>

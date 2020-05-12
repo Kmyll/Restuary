@@ -28,6 +28,15 @@ SOMMAIRE
 10. ADMIN
 11. PROFILE
 12. SETTINGS
+
+RESPONSIVE DESIGN
+
+1. LANDING
+2. HOMEPAGE
+3. ADMIN
+4. SIGN IN
+
+
 */
 
 /* 01. GENERAL */
@@ -95,6 +104,17 @@ h1 {
 
 /* 02. NAV */
 
+.burgerMenu {
+  display: none;
+  margin: 3% 40px 0 0;
+  font-size: 26px;
+  line-height: 70px;
+  color: $CornFlowerBlue;
+}
+.burgerToggle {
+  display: none;
+}
+
 .LogoHeader {
   flex-grow: 1;
 }
@@ -104,6 +124,7 @@ h1 {
 }
 
 .topNav,
+.menuBurgerNav,
 .LandingMenu {
   padding: 0;
   margin: 0;
@@ -111,6 +132,8 @@ h1 {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  flex-grow: 1;
+
   li {
     margin: 0.5% 3%;
     list-style: none;
@@ -413,6 +436,13 @@ h1 {
       border: 1px solid #d2d2d2;
       border-radius: 5px;
     }
+    .imageDisplay img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+      margin: 3% auto;
+      display: block;
+    }
     label {
       display: inline-block;
       width: 140px;
@@ -437,6 +467,15 @@ h1 {
 }
 .DropImg {
   border: none !important;
+}
+.image img {
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+.TextDisplay {
+  margin-left: 3%;
+  font-size: 1.3rem;
 }
 
 /* EXPLORE PLACES */
@@ -527,7 +566,7 @@ h1 {
     border: 1px solid lightgray;
     width: 70%;
     margin-right: 2%;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     outline: none;
     padding: 1%;
@@ -553,6 +592,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.3rem;
   ul {
     vertical-align: middle;
     justify-content: center;
@@ -631,7 +671,7 @@ h1 {
 /* HOMEPAGE LIST DESIGN (delete previous in case list design is better. othersise delete below*/
 
 .adminListTable {
-  width: 80%;
+  width: 73%;
   display: block;
   margin: 1% auto;
   padding: 0;
@@ -728,9 +768,10 @@ h1 {
         height: 100px;
         width: 260%;
         border-radius: 10px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
 
-        a{
+        a {
           text-decoration: none;
           font-size: 1.2rem;
         }
@@ -738,21 +779,46 @@ h1 {
     }
   }
 }
-.UsersBtn{
-  border: 3px solid $CornFlowerBlue;
-  a{
+.UsersBtn {
+  button {
+    border: 3px solid $CornFlowerBlue;
     color: CornFlowerBlue;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      transition: ease-in-out 0.2s;
+    }
   }
 }
-.placesBtn{
-  background-color: $CornFlowerBlue;
-  border: 3px solid $CornFlowerBlue;
-  a{
+.placesBtn {
+  button {
+    font-size: 1rem;
     color: white;
+    background-color: $CornFlowerBlue;
+    border: 3px solid $CornFlowerBlue;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      transition: ease-in-out 0.2s;
+    }
   }
 }
 
-
+.detailsBtn {
+  button {
+    border: none;
+    outline: none;
+    svg {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+  }
+}
 
 .usersList {
   margin-left: 20%;
@@ -1049,5 +1115,132 @@ h1 {
   p {
     margin-top: 1%;
     text-align: justify;
+  }
+}
+
+/* RESPONSIVE DESIGN */
+
+/* 1. Landing */
+
+@media only screen and (max-width: 1024px) {
+  .cardPic {
+    max-height: 115px;
+  }
+  .Presentation div {
+    max-height: 200px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .Presentation {
+    grid-template-columns: 70%;
+  }
+  .Presentation div {
+    margin-top: 8%;
+  }
+}
+
+/* 2. Homepage */
+@media only screen and (max-width: 1024px) {
+  .adminListTable {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 414px) {
+  .adminListTable {
+    li {
+      width: 100%;
+    }
+    img {
+      width: 306px;
+    }
+  }
+}
+/* 3. Admin */
+
+@media only screen and (max-width: 1024px) {
+  .adminImg {
+    max-width: 400px;
+    margin-left: 20%;
+  }
+  .admin_container section div button {
+    width: 250%;
+    height: 75px;
+  }
+}
+
+/* 3. Sign in */
+
+@media only screen and (max-width: 414px) {
+  .loginIllustration {
+    display: none;
+  }
+  .loginSection {
+    grid-template-columns: 80%;
+  }
+}
+
+/* 4. Nav */
+
+@media only screen and (max-width: 500px) {
+  .burgerMenu {
+    display: block;
+    cursor: pointer;
+  }
+  .menuBurgerNav {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    li {
+      margin: 2.5% 3%;
+    }
+  }
+  .topNav {
+    height: 60px;
+  }
+
+  #toggle:checked + .topNav {
+    display: block !important;
+  }
+}
+
+/* 5/ Add a place */
+
+@media only screen and (max-width: 414px) {
+  .addPlaceForm {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+
+    p {
+      display: none;
+    }
+    form {
+      input,
+      textarea {
+        width: 100%;
+      }
+      label {
+        display: inline-block;
+        text-align: left;
+        margin: 2% 0 2% -45%;
+        color: $CornFlowerBlue;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* 6.explore */
+
+@media only screen and (max-width: 414px) {
+  .Explore_searchBar {
+    width: 123%;
+    display: block;
+  }
+  .exploreList{
+    ul{
+      padding-left: 0;
+    }
   }
 }
