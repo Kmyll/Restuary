@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import dino from '../../assets/img/dino.gif';
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import { FcCheckmark } from 'react-icons/fc';
 import firebase from '../Firestore';
 import { FcDeleteDatabase } from 'react-icons/fc';
 import { GoSearch } from 'react-icons/go';
@@ -31,11 +28,6 @@ class PlaceList extends Component {
   }
 
   componentDidMount() {
-    {
-      /*   if (!this.places.length) {
-          this.setState({ loading: true });
-        } */
-    }
     console.log('mounted');
     const db = firebase.firestore();
     db.collection('places')

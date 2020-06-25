@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withFirebase } from '../Firebase';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 import { GoPlus } from 'react-icons/go';

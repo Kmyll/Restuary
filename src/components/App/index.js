@@ -16,6 +16,7 @@ import SettingsPage from '../Settings';
 import WelcomePage from '../Welcome';
 import AdministrationPage from '../Administration';
 import ExplorePage from '../Explore';
+import LegalPage from '../Legal'
 
 import * as ROUTES from '../../constants/routes';
 
@@ -33,6 +34,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PROFILE} component={ProfilePage} />
       <Route path={ROUTES.EXPLORE} component={ExplorePage} />
+      <Route path={ROUTES.LEGAL} component={LegalPage} />
       <Route
         path={ROUTES.ADMINISTRATION}
         component={AdministrationPage}

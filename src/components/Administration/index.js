@@ -21,7 +21,7 @@ export default class index extends Component {
               <button>Manage Places</button>
             </Link>
           </div>
-          <img className="adminImg" src={adminImg} />
+          <img className="adminImg" src={adminImg} alt="admin illustration"/>
         </section>
       </div>
     );

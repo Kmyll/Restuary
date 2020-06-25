@@ -10,7 +10,7 @@ class Header extends Component {
     return (
       <React.Fragment>
         <section className="LandingHeader">
-          <img className="LandingMainPic" src={font} />
+          <img className="LandingMainPic" src={font} alt="landing landscape"/>
           <h1>
             Welcome to Restuary <br />
             <span>Travel planning made easier</span>
@@ -19,14 +19,14 @@ class Header extends Component {
         <h2 className="sectionTitle"> How it works</h2>
         <section className="Presentation">
           <div>
-            <img className="cardPic" src={prep} />{' '}
+            <img className="cardPic" src={prep} alt="Register or login to browse places"/>{' '}
             <p>
               Register or login <br /> to browse the best local places
             </p>{' '}
           </div>
           <div>
             {' '}
-            <img className="cardPic" src={plane} />{' '}
+            <img className="cardPic" src={plane} alt="pPrepare your trip"/>{' '}
             <p>
               Prepare your trip
               <br /> and enjoy your journey
@@ -34,7 +34,7 @@ class Header extends Component {
           </div>
           <div>
             {' '}
-            <img className="cardPic" src={feedback} />
+            <img className="cardPic" src={feedback} alt="Post unseen places"/>
             <p>
               Post the best unseen <br />
               place you visited during your trip

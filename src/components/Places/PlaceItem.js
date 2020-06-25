@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { compose } from 'recompose';
-import { withFirebase } from '../Firebase';
-import dino from '../../assets/img/dino.gif';
 import firebase from '../Firestore';
 
 export default class placeItem extends Component {
@@ -16,11 +13,11 @@ export default class placeItem extends Component {
                  }
 
                  componentDidMount() {
-                   {
+
                      /*   if (!this.places.length) {
           this.setState({ loading: true });
         } */
-                   }
+
                    console.log('mounted');
                    const db = firebase.firestore();
                    db.collection('places')
@@ -101,7 +98,7 @@ export default class placeItem extends Component {
                            <hr />
                            <div>
                              <section>
-                               <img src={place.imageURL} />
+                               <img src={place.imageURL} alt="place illustration"/>
                              </section>
                              <section className="TextDisplay">
                                <p>

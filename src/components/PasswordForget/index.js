@@ -9,7 +9,7 @@ import { FaLock } from 'react-icons/fa';
 
 const PasswordForgetPage = () => (
   <div className="DisplayForgotPassword">
-    <img className="forgotPasswordImg" src={forgotPassword} />
+    <img className="forgotPasswordImg" src={forgotPassword} alt="password forget illustration"/>
     <div>
       <h1>
         {' '}

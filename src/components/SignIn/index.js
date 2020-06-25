@@ -19,11 +19,14 @@ const SignInPage = () => (
         <FaSignInAlt className="icons" /> SignIn
       </h1>
       <SignInForm />
+      <PasswordForgetLink />
+      <SignUpLink />
+      <div className="SignInOption">
+        <p className="SignInline"></p> <p>Or</p> <p className="SignInline"></p></div>
       <SignInGoogle />
       <SignInFacebook />
       {/* <SignInTwitter /> */}
-      <PasswordForgetLink />
-      <SignUpLink />
+
     </section>
     <img className="loginIllustration" src={login} />
   </div>

@@ -12,8 +12,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-firebase-file-uploader": "^2.4.3",
+    "react-firebaseui": "^4.1.0",
     "react-icons": "^3.10.0",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.1.0",
     "react-toastify": "^5.5.0",
     "recompose": "^0.30.0",
@@ -33,5 +34,17 @@
   ],
   "devDependencies": {
     "sass": "^1.26.5"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kmyll/restuarySave.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kmyll/restuarySave/issues"
+  },
+  "homepage": "https://github.com/Kmyll/restuarySave#readme",
+  "description": ""
 }

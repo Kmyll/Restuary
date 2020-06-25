@@ -25,7 +25,7 @@ const NavigationAuth = ({ authUser }) => (
   <ul className="topNav">
     <li className="LogoHeader">
       <Link to={ROUTES.LANDING}>
-        <img className="logo" src={Logo} />
+        <img className="logo" src={Logo} alt="restuary logo"/>
       </Link>
     </li>
     <div className="menuBurgerNav">
@@ -50,7 +50,7 @@ const NavigationAuth = ({ authUser }) => (
         <SignOutButton />
       </li>
     </div>
-    <label className="burgerMenu" for="toggle">
+    <label className="burgerMenu" htmlFor="toggle">
       <GiHamburgerMenu />
     </label>
     <input className="burgerToggle" type="checkbox" id="toggle" />
@@ -59,16 +59,16 @@ const NavigationAuth = ({ authUser }) => (
 
 const NavigationNonAuth = () => (
   <ul className="LandingMenu">
-    
+
     <li className="LogoHeader">
       <Link to={ROUTES.LANDING}>
-        <img className="logo" src={Logo} />
+        <img className="logo" src={Logo} alt="restuary logo"/>
       </Link>
     </li>
     <li className="signInBtn">
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
-    <label className="burgerMenu" for="toggle">
+    <label className="burgerMenu" HtmlFor="toggle">
       <GiHamburgerMenu />
     </label>
     <input className="burgerToggle" type="checkbox" id="toggle" />

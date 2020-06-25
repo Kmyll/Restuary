@@ -150,14 +150,34 @@ h1 {
   }
 }
 
+
 .signInBtn {
   background-color: $MidnightBlue;
   padding: 10px 25px;
   border-radius: 20px;
   color: white;
-
   font-weight: 800;
 }
+
+
+.SignInOption{
+  text-align: center;
+  margin: 8% auto 3% auto;
+  p{
+ display: inline-block;
+ color: #78a2e7;
+ font-size: 1.5rem;
+
+  }
+}
+
+.SignInline{
+  height: 1px;
+  width: 150px;
+  background-color: #78a2e7;
+  margin: 0;
+}
+
 
 /* 03. LANDING PAGE */
 
@@ -225,11 +245,13 @@ h1 {
 .signInLogo {
   background-color: white;
   border: none;
+  outline: none;
   img {
-    max-width: 260px;
+    max-width: 300px;
     text-align: center;
     justify-self: center;
   }
+
 }
 
 .loginSection {
@@ -270,6 +292,9 @@ h1 {
     padding: 2% 4%;
     outline: none;
   }
+  p{
+    color: darkred;
+  }
 }
 .enterBtn {
   margin: 6% auto 10%;
@@ -289,6 +314,10 @@ h1 {
   display: flex;
   flex-direction: column;
   margin: 2% auto;
+  p{
+    text-align: center;
+    color: darkred;
+  }
 }
 
 .forgotPasswordPara,
@@ -416,7 +445,7 @@ h1 {
     justify-content: space-around;
     input {
       width: 500px;
-      height: 40px;
+
       justify-content: flex-end;
       margin-left: 3%;
       margin-bottom: 1%;
@@ -1051,6 +1080,7 @@ h1 {
   outline: none;
 }
 
+
 /* PLACE ITEM SINGLE */
 
 .placeItemContainer {
@@ -1087,36 +1117,44 @@ h1 {
   cursor: pointer;
 }
 
-/*Information  */
+/* LEGAL INFORMATION  */
 
-.compulsoryMentions {
+.LegalAppBar{
   margin: 2% auto;
-  padding: 1% 3%;
+  max-width: 80%;
   display: block;
-  h1,
-  h2 {
+}
+
+
+.legalContainer{
+  margin: 2% auto;
+  max-width: 75%;
+  h1{
     text-align: center;
     color: $CornFlowerBlue;
-    font-size: 2.2rem;
-    margin: 4%;
+    font-size: 3rem;
   }
-  h3,
-  h4 {
-    color: $MidnightBlue;
-  }
-  h5,
-  h6 {
+  h2{
     color: $Orange;
-    margin-left: 2%;
-    p {
-      margin-left: 2% !important;
-    }
+    font-size: 1.6rem;
+    margin-top: 5%!important;
   }
-  p {
-    margin-top: 1%;
+  p{
     text-align: justify;
   }
 }
+
+
+.MuiAppBar-colorPrimary{
+  background-color: #9bb6e2!important;
+}
+
+.PrivateTabIndicator-colorSecondary-67{
+  background-color: $MidnightBlue!important;
+}
+
+
+
 
 /* RESPONSIVE DESIGN */
 

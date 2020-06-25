@@ -7,6 +7,7 @@ import upload from '../../assets/img/upload.gif';
 import { GoPlus } from 'react-icons/go';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 toast.configure();
 
@@ -29,6 +30,24 @@ export default class AddPlace extends Component {
       progress: 0,
     };
   }
+
+
+componentDidMount(){
+console.log('mounted')
+const db = firebase.firestore();
+db.collection('users')
+  .get()
+  .then((snapshot) => {
+    const users = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      users.push(data);
+    });
+    this.setState({ users: users });
+  })
+  .catch((error) => console.log(error));
+}
+
 
   //Change for texte
   onChange = (e) => {

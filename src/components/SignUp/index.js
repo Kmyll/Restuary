@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import { Checkbox } from 'semantic-ui-react'
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -8,7 +8,7 @@ import register from '../../assets/img/register.png';
 
 const SignUpPage = () => (
   <div className="flex_register">
-    <img className="registerImg" src={register} />
+    <img className="registerImg" src={register} alt="registerImg"/>
     <div>
       <h1>SignUp</h1>
       <SignUpForm />
@@ -103,7 +103,7 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === ''
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -149,6 +149,12 @@ class SignUpFormBase extends Component {
           />
         </label> */}
         <br />
+        <Checkbox
+        label={<label>I accept the <a href='/'>Terms of Service and Conditions</a> of Restuary</label>}
+        readOnly
+        defaultChecked/>
+        <br/><br/>
+
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>

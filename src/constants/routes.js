@@ -3,7 +3,7 @@ export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const HOME = '/home';
 export const ACCOUNT = '/account';
-export const PASSWORD_FORGET = '/pw-forget';
+export const PASSWORD_FORGET = '/password-forget';
 export const ADMIN = '/admin';
 export const ADMIN_DETAILS = '/admin/:id';
 
@@ -16,3 +16,4 @@ export const SETTINGS = '/settings';
 export const WELCOME = '/welcome';
 export const ADMINISTRATION = '/Administration';
 export const EXPLORE = '/Explore';
+export const LEGAL='/Terms-and-conditions'
