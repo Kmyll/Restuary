@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {Link} from 'react-router-dom'
 import { FaKey } from 'react-icons/fa';
@@ -31,17 +32,13 @@ const SIGN_IN_METHODS = [
   },*/}
 ];
 
-const SettingsPage = ({}) => (
-  <AuthUserContext.Consumer>
-    {(authUser) => (
+const SettingsPage = ({authUser}) => (
       <div className="container settingsContainer">
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
       </div>
-    )}
-  </AuthUserContext.Consumer>
 );
 
 class Extra extends Component {
@@ -247,9 +244,15 @@ class DefaultLoginToggle extends Component {
 
 const LoginManagement = withFirebase(LoginManagementBase);
 
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
+
 const condition = authUser => !!authUser;
 
 export default compose(
+  connect(mapStateToProps),
   withEmailVerification,
   withAuthorization(condition),
 )(SettingsPage);

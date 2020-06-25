@@ -15,6 +15,7 @@ function searchingFor(term) {
       name.country.toLowerCase().includes(term.toLowerCase()) ||
       name.continent.toLowerCase().includes(term.toLowerCase()) ||
       name.name.toLowerCase().includes(term.toLowerCase()) ||
+
       !term
     );
   };
@@ -81,7 +82,7 @@ class PlaceList extends Component {
                 return (
                   <li key={place.uid}>
                     <img src={place.imageURL} />
-      
+
 
                     <p>
                       {' '}
@@ -98,6 +99,11 @@ class PlaceList extends Component {
                       {' '}
                       <span className="bold">Continent: </span>
                       {place.continent}
+                    </p>
+                    <p>
+                      {' '}
+                      <span className="bold">Username: </span>
+                      {place.username}
                     </p>
                     <div className="homePageHr"></div>
                     <Link

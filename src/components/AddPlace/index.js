@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { withFirebase } from '../Firebase';
 import firebase from '../Firestore';
 import { storage } from '../Firestore';
@@ -8,6 +9,9 @@ import { GoPlus } from 'react-icons/go';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import store from '../../redux/store'
+import { compose } from 'recompose';
+import { withAuthorization, withEmailVerification } from '../Session';
 
 toast.configure();
 
@@ -17,10 +21,12 @@ const notify = () => {
   });
 };
 
-export default class AddPlace extends Component {
+export class AddPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid:this.props.authUser.uid,
+      username:this.props.authUser.username,
       name: '',
       country: '',
       continent: '',
@@ -28,8 +34,10 @@ export default class AddPlace extends Component {
       image: '',
       imageURL: '',
       progress: 0,
+
     };
   }
+
 
 
 componentDidMount(){
@@ -91,6 +99,8 @@ db.collection('users')
       timestampsInSnapshots: true,
     });
     const placeRef = db.collection('places').add({
+      uid: this.state.uid,
+      username: this.state.username,
       image: this.state.image,
       imageURL: this.state.imageURL,
       name: this.state.name,
@@ -99,6 +109,8 @@ db.collection('users')
       description: this.state.description,
     });
     this.setState({
+      uid:'',
+      username: '',
       image: '',
       name: '',
       country: '',
@@ -108,7 +120,8 @@ db.collection('users')
   };
 
   render() {
-    console.log(this.state);
+    console.log('props', this.props.authUser.username);
+
     const {
       name,
       country,
@@ -132,6 +145,7 @@ db.collection('users')
         <h1>
           <GoPlus />
           Add a place
+
         </h1>
         <p>
           This is your turn to contribute to this community and add
@@ -140,6 +154,25 @@ db.collection('users')
           others to find your post.
         </p>
         <form onSubmit={this.onSubmit}>
+        <div className="block hide">
+            <label>uid</label>
+            <input
+              type="text"
+              name="uid"
+              value={this.state.uid}
+              onChange={this.onChange}
+            />
+          </div>
+        <div className="block">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              readOnly={true}
+              value={this.state.username}
+              onChange={this.onChange}
+            />
+          </div>
           <div className="block">
             <label>Name of the place</label>
             <input
@@ -200,3 +233,12 @@ db.collection('users')
     );
   }
 }
+
+
+
+const condition = (authUser) => !!authUser;
+
+export default compose(
+  withEmailVerification,
+  withAuthorization(condition),
+)(AddPlace);
