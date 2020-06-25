@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 
@@ -12,6 +11,10 @@ const withAuthentication = Component => {
         authUser: JSON.parse(localStorage.getItem('authUser')),
       };
     }
+
+
+
+
 
     componentDidMount() {
       this.listener = this.props.firebase.onAuthUserListener(
