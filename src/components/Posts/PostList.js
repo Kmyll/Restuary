@@ -4,6 +4,18 @@ import { withFirebase } from '../Firebase';
 import firebase from '../Firestore';
 import { FcDeleteDatabase } from 'react-icons/fc';
 import { GoSearch } from 'react-icons/go';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
+const notify = () => {
+  if (this.state.isVerified) {
+    toast.success("The user was successfully deleted. Thank you.");
+  } else {
+    toast.error("Something went wrong.Plase try again.");
+  }
+};
 
 function searchingFor(term) {
   return function (name) {
@@ -49,9 +61,26 @@ class PlaceList extends Component {
     db.collection('places').remove();
   };
 
-  /*  componentWillUnmount() {
-    this.unsubscribe();
-  } */
+  removePlace = () => {
+    console.log('mounted');
+    const db = firebase.firestore();
+      db.collection('places').doc(this.state.place.uid).delete().then(function(){
+        toast.success("✔️ The post was successfully sent. Thank you.");
+      }).catch(function(error) {
+        toast.danger("Something went wrong. Please try again.");
+      });
+  }
+
+
+
+
+
+
+
+
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe();
+  }
 
   //Searchbar
   searchHandler = (event) => {
@@ -82,6 +111,7 @@ class PlaceList extends Component {
           <table className="adminListTable">
             <thead>
               <tr>
+              <td>ID</td>
                 <td>Name</td>
                 <td>Country</td>
                 <td>Continent</td>
@@ -91,6 +121,7 @@ class PlaceList extends Component {
             {places.map((place) => (
               <tbody key={place.uid}>
                 <tr>
+                <td>{place.uid}></td>
                   <td>{place.name}</td>
                   <td>{place.country}</td>
                   <td>{place.continent}</td>

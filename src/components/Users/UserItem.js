@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-
+import firebase from '../Firestore';
 import { withFirebase } from '../Firebase';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
+const notify = () => {
+  if (this.state.isVerified) {
+    toast.success("The user was successfully deleted. Thank you.");
+  } else {
+    toast.error("Something went wrong.Plase try again.");
+  }
+};
 
 class UserItem extends Component {
   constructor(props) {
@@ -12,7 +24,6 @@ class UserItem extends Component {
       ...props.location.state,
     };
   }
-
   componentDidMount() {
     if (this.state.user) {
       return;
@@ -37,6 +48,17 @@ class UserItem extends Component {
   onSendPasswordResetEmail = () => {
     this.props.firebase.doPasswordReset(this.state.user.email);
   };
+
+  deleteAccount = () => {
+    console.log('mounted');
+    const db = firebase.firestore();
+      db.collection('users').doc(this.state.user.uid).delete().then(function(){
+        toast.success("✔️ The user was succesfully deleted.");
+        window.location.href = "/admin";
+      }).catch(function(error) {
+        toast.danger("Something went wrong. Please try again.");
+      });
+  }
 
   render() {
     const { user, loading } = this.state;
@@ -68,7 +90,9 @@ class UserItem extends Component {
             </span>
             <span>
               <button type="button"
-              className="BtnDeleteAccount">
+              className="BtnDeleteAccount"
+              onClick={this.deleteAccount}
+              >
                 Delete the account
               </button>
             </span>

@@ -17,6 +17,9 @@ import WelcomePage from '../Welcome';
 import AdministrationPage from '../Administration';
 import ExplorePage from '../Explore';
 import LegalPage from '../Legal'
+import HelpPage from '../Settings/help'
+
+
 
 import * as ROUTES from '../../constants/routes';
 
@@ -35,6 +38,7 @@ const App = () => (
       <Route path={ROUTES.PROFILE} component={ProfilePage} />
       <Route path={ROUTES.EXPLORE} component={ExplorePage} />
       <Route path={ROUTES.LEGAL} component={LegalPage} />
+      <Route path={ROUTES.HELP} component={HelpPage} />
       <Route
         path={ROUTES.ADMINISTRATION}
         component={AdministrationPage}
@@ -50,6 +54,8 @@ const App = () => (
       <Route path={ROUTES.ADDPLACE} component={AddPlacePage} />
       <Route path={ROUTES.SETTINGS} component={SettingsPage} />
       <Route path={ROUTES.WELCOME} component={WelcomePage} />
+
+
     </div>
   </Router>
 );

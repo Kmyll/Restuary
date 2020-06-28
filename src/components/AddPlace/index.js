@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { withFirebase } from '../Firebase';
 import firebase from '../Firestore';
-import { storage } from '../Firestore';
 import FileUploader from 'react-firebase-file-uploader';
-import upload from '../../assets/img/upload.gif';
 import { GoPlus } from 'react-icons/go';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import store from '../../redux/store'
 import { compose } from 'recompose';
 import { withAuthorization, withEmailVerification } from '../Session';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 toast.configure();
 
@@ -24,38 +19,47 @@ const notify = () => {
 export class AddPlace extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      uid:this.props.authUser.uid,
       username:this.props.authUser.username,
       name: '',
       country: '',
-      continent: '',
+      region: '',
       description: '',
       image: '',
       imageURL: '',
       progress: 0,
-
+      continent: '',
+      tags: []
     };
   }
 
 
+//select countries (react-country-region-selector)
+selectCountry (val) {
+  this.setState({ country: val });
+}
+selectRegion (val) {
+  this.setState({ region: val });
+}
+//continents
 
-componentDidMount(){
-console.log('mounted')
-const db = firebase.firestore();
-db.collection('users')
-  .get()
-  .then((snapshot) => {
-    const users = [];
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-      users.push(data);
-    });
-    this.setState({ users: users });
-  })
-  .catch((error) => console.log(error));
+handleChange = (e) => {
+  this.setState({continent:e.target.value});
 }
 
+inputKeyDown = (e) => {
+  const val = e.target.value;
+  if (e.key === 'Enter' && val) {
+    if (this.state.tags.find(tag => tag.toLowerCase() === val.toLowerCase())) {
+      return;
+    }
+    this.setState({ tags: [...this.state.tags, val]});
+    this.tagInput.value = null;
+  } else if (e.key === 'Backspace' && !val) {
+    this.removeTag(this.state.tags.length - 1);
+  }
+}
 
   //Change for texte
   onChange = (e) => {
@@ -63,6 +67,19 @@ db.collection('users')
       [e.target.name]: e.target.value,
     });
   };
+
+
+  // checkboxes toggle
+
+  toggleChange = () => {
+    this.setState({
+      isChecked: !this.state.isChecked // flip boolean value
+    }, function() {
+      console.log(this.state);
+    }.bind(this));
+  }
+
+
 
   //Send image
   handleUploadStart = () => {
@@ -90,49 +107,55 @@ db.collection('users')
 
   //Send texte
 
-  onSubmit = (event, authUser) => {
+  onSubmit = (event, authUser, place) => {
     event.preventDefault();
     event.target.reset();
-
     const db = firebase.firestore();
     db.settings({
       timestampsInSnapshots: true,
     });
     const placeRef = db.collection('places').add({
-      uid: this.state.uid,
+      created: firebase.firestore.Timestamp.now(),
       username: this.state.username,
       image: this.state.image,
       imageURL: this.state.imageURL,
       name: this.state.name,
       country: this.state.country,
+      region: this.state.region,
       continent: this.state.continent,
-      description: this.state.description,
+      description: this.state.description
     });
+
+
     this.setState({
-      uid:'',
       username: '',
       image: '',
       name: '',
       country: '',
+      region: '',
       continent: '',
       description: '',
     });
   };
 
-  render() {
-    console.log('props', this.props.authUser.username);
 
+
+  render() {
+    console.log('props', this.props);
+    console.log('I am the ID', this.id)
+    console.log(this.state)
     const {
       name,
       country,
+      region,
       continent,
       description,
       error,
+      tags,
     } = this.state;
 
     const isInvalid =
       name === '' ||
-      country === '' ||
       continent === '' ||
       description === '' ||
       name === country ||
@@ -154,16 +177,20 @@ db.collection('users')
           others to find your post.
         </p>
         <form onSubmit={this.onSubmit}>
-        <div className="block hide">
-            <label>uid</label>
-            <input
-              type="text"
-              name="uid"
-              value={this.state.uid}
-              onChange={this.onChange}
+          <div className="block">
+            <label>Add a picture</label>
+
+            <FileUploader
+              accept="mage/*"
+              name="image"
+              storageRef={firebase.storage().ref('test')}
+              onUploadStart={this.onUploadStart}
+              onUploadSuccess={this.handleUploadSuccess}
             />
           </div>
-        <div className="block">
+
+
+        <div className="block hide">
             <label>Username</label>
             <input
               type="text"
@@ -182,24 +209,39 @@ db.collection('users')
               onChange={this.onChange}
             />
           </div>
+
+
+
           <div className="block">
-            <label>Country</label>
-            <input
-              type="text"
-              name="country"
-              placeholder="Country where it is located"
-              onChange={this.onChange}
-            />
-          </div>
+          <label>Country</label>
+              <CountryDropdown
+                        value={country}
+                        onChange={(val) => this.selectCountry(val)} />
+            </div>
+
           <div className="block">
-            <label>Continent</label>
-            <input
-              type="text"
-              name="continent"
-              placeholder="Continent"
-              onChange={this.onChange}
-            />
-          </div>
+          <label>Region</label>
+              <RegionDropdown
+                        country={country}
+                        value={region}
+                        onChange={(val) => this.selectRegion(val)} />
+            </div>
+
+
+            <div className="block">
+          <label>Continent</label>
+        <select value={this.state.continent} onChange={this.handleChange} >
+        <option value="Africa">Africa</option>
+        <option value="Antartica">Antartica</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="NorthAmerica">North America</option>
+        <option value="SouthAmerica">South America</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+      </div>
+
+
           <div className="block">
             <label className="vertical_align">Description</label>
             <textarea
@@ -209,17 +251,8 @@ db.collection('users')
               onChange={this.onChange}
             />
           </div>
-          <div className="block">
-            <label>Add a picture</label>
 
-            <FileUploader
-              accept="mage/*"
-              name="image"
-              storageRef={firebase.storage().ref('test')}
-              onUploadStart={this.onUploadStart}
-              onUploadSuccess={this.handleUploadSuccess}
-            />
-          </div>
+
 
           <div className="block image">
             {this.state.image && <img src={this.state.imageURL} />}

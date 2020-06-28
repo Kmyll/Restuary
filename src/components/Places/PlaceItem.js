@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import firebase from '../Firestore';
 
+
 export default class placeItem extends Component {
                  constructor(props) {
                    super(props);
@@ -83,13 +84,14 @@ export default class placeItem extends Component {
                      .doc(placeID)
                      .set(place);
                    console.log('commentaire ajouté !');
+                   console.log(placeID)
                  };
 
                  render() {
                    const { place, loading } = this.state;
                    return (
                      <React.Fragment>
-                       {/*<h2>Place ({this.props.match.params.id})</h2>*/}
+
                        {loading && <div>Loading ...</div>}
 
                        {place && (
@@ -105,19 +107,26 @@ export default class placeItem extends Component {
                                  <span>Country:</span> {place.country}
                                </p>
                                <p>
-                                 <span>continent:</span>{' '}
+                                 <span>Region:</span> {place.region}
+                               </p>
+                               <p>
+                                 <span>Continent:</span>{' '}
                                  {place.continent}
                                </p>
                                <p>
                                  <span>Description:</span>{' '}
                                  {place.description}
                                </p>
-                           { /*   <button
+                               <p>
+                                 <span>Added by:</span>{' '}
+                                 {place.username}
+                               </p>
+                         {  /* <button
                                  onClick={() =>
                                    this.addCommentToPlace1()
                                  }
                                >
-                                 Ajouter un commentaire à la place 1
+                                 Ajouter un commentaire {place.name}
                                </button>
                                <li>
                                  {place.commentaires &&
@@ -132,7 +141,7 @@ export default class placeItem extends Component {
                                        );
                                      },
                                    )}
-                               </li> */}
+                               </li>*/}
                              </section>
                            </div>
                          </div>

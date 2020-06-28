@@ -108,6 +108,12 @@ class Firebase {
 
   messages = () => this.db.collection('messages');
 
+    // *** Places API ***
+
+    places = uid => this.db.doc(`places/${uid}`);
+
+    places = () => this.db.collection('places');
+
 }
 
 export default Firebase;

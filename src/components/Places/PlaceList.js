@@ -34,6 +34,7 @@ class PlaceList extends Component {
   componentDidMount() {
     const db = firebase.firestore();
     db.collection('places')
+    .orderBy("created", "desc")
       .get()
       .then((snapshot) => {
         const places = [];
@@ -82,8 +83,6 @@ class PlaceList extends Component {
                 return (
                   <li key={place.uid}>
                     <img src={place.imageURL} />
-
-
                     <p>
                       {' '}
                       <span className="bold">Name: </span>
@@ -94,27 +93,25 @@ class PlaceList extends Component {
                       <span className="bold">Country: </span>
                       {place.country}
                     </p>
-
                     <p>
                       {' '}
                       <span className="bold">Continent: </span>
                       {place.continent}
                     </p>
-                    <p>
-                      {' '}
-                      <span className="bold">Username: </span>
-                      {place.username}
-                    </p>
+
                     <div className="homePageHr"></div>
+                    <div className="homepageFooter">
+                    <p>{place.username}</p>
                     <Link
                       className="homeLink"
                       to={{
-                        pathname: `${ROUTES.HOME}/${place.uid}`,
+                        pathname: `${ROUTES.HOME}/${place.created.seconds}`,
                         state: { place },
                       }}
                     >
                       <p>Details...</p>
                     </Link>
+                    </div>
                   </li>
                 );
               })}

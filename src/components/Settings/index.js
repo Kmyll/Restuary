@@ -12,6 +12,7 @@ import {
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import Help from './help'
 
 const SIGN_IN_METHODS = [
   {
@@ -38,6 +39,7 @@ const SettingsPage = ({authUser}) => (
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
+        <button><Link to='/help'>Help</Link></button>
       </div>
 );
 
@@ -145,8 +147,10 @@ class LoginManagementBase extends Component {
                   />
                 )}
               </li>
+
             );
           })}
+
         </ul>
         {error && error.message}
       </div>

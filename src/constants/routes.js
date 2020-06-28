@@ -6,7 +6,6 @@ export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/password-forget';
 export const ADMIN = '/admin';
 export const ADMIN_DETAILS = '/admin/:id';
-
 export const ADMINPLACES = '/AdminPlaces';
 export const ADMINPLACES_DETAILS = '/AdminPlaces/:id';
 export const ADDPLACE = '/addPlace';
@@ -17,3 +16,4 @@ export const WELCOME = '/welcome';
 export const ADMINISTRATION = '/Administration';
 export const EXPLORE = '/Explore';
 export const LEGAL='/Terms-and-conditions'
+export const HELP='/Help'
