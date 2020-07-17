@@ -39,7 +39,8 @@ const SettingsPage = ({authUser}) => (
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
-        <button><Link to='/help'>Help</Link></button>
+        <Extra/>
+
       </div>
 );
 
@@ -52,10 +53,8 @@ class Extra extends Component {
           Information
         </h2>
         <div>
-          <Link to="./Information">
-            {' '}
-            <button className="extraBtn ">Information</button>
-          </Link>
+        <button><Link to='/Terms-and-conditions'>Terms and conditions</Link></button>
+        <button><Link to='/help'>User's guide</Link></button>
         </div>
       </section>
     );

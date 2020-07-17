@@ -150,7 +150,7 @@ class SignUpFormBase extends Component {
         </label> */}
         <br />
         <Checkbox
-        label={<label>I accept the <a href='/'>Terms of Service and Conditions</a> of Restuary</label>}
+        label={<label>I accept the <a href='/Terms-and-conditions'>Terms of Service and Conditions</a> of Restuary</label>}
         readOnly
         defaultChecked/>
         <br/><br/>

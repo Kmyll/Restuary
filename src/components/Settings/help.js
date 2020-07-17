@@ -101,14 +101,10 @@ export default class Help extends Component {
         <div className="placeCard">
         <br/>
           <p>
-     To Visualize and browse for places, you have to click on "Home" from the top navbar. Once you are on this page, you can type any keyword to make a research. From this page, you can visualise the places you posted as well as all the places the others users posted as well. <br/><br/>
-     For each place, you will see :<br/><br/>
+            To Visualize and browse for places, you have to click on "Home" from the top navbar. Once you are on this page, you can type any keyword to make a research. From this page, you can visualise the places you posted as well as all the places the others users posted as well. <br/><br/>
+            For each place, you will see :<br/><br/>
             a picture, as well as the given name, country, continent and the user who published it are displayed. On the bottom right of the card, the "Detail..." is a link to see more specific information regarding the given place.</p>
-
-
-
             <img src={placeCard}/>
-
             </div>
 
         </Accordion.Content>

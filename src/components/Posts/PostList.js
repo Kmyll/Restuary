@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dino from '../../assets/img/dino.gif';
 import { withFirebase } from '../Firebase';
 import firebase from '../Firestore';
-import { FcDeleteDatabase } from 'react-icons/fc';
+import { FaPlus } from 'react-icons/fa';
 import { GoSearch } from 'react-icons/go';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,13 +71,6 @@ class PlaceList extends Component {
       });
   }
 
-
-
-
-
-
-
-
   componentWillUnmount() {
     this.unsubscribe && this.unsubscribe();
   }
@@ -101,6 +94,7 @@ class PlaceList extends Component {
           <form className="Explore_searchBar">
             <input
               type="text"
+
               onChange={this.searchHandler}
               value={term}
             />
@@ -111,23 +105,21 @@ class PlaceList extends Component {
           <table className="adminListTable">
             <thead>
               <tr>
-              <td>ID</td>
                 <td>Name</td>
                 <td>Country</td>
                 <td>Continent</td>
                 <td className="detailsBtn">Delete</td>
               </tr>
             </thead>
-            {places.map((place) => (
+            {places.filter(searchingFor(term)).map((place) => (
               <tbody key={place.uid}>
                 <tr>
-                <td>{place.uid}></td>
                   <td>{place.name}</td>
                   <td>{place.country}</td>
                   <td>{place.continent}</td>
                   <td className="detailsBtn">
                     <button onClick={this.removePlace}>
-                      <FcDeleteDatabase />
+                      <FaPlus />
                     </button>
                   </td>
                 </tr>

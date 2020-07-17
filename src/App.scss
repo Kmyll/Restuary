@@ -79,6 +79,10 @@ body {
   outline: none;
 }
 
+button{
+  cursor: pointer;
+}
+
 .loader {
   img {
     display: block;
@@ -552,8 +556,11 @@ h1 {
 
 
 .TextDisplay {
-  margin-left: 3%;
   font-size: 1.3rem;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .tagInput {
@@ -784,14 +791,15 @@ h1 {
 
 .adminListTable {
   width: 73%;
-  display: block;
   margin: 1% auto;
   padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
+  margin-right: 11%;
   li {
+
     margin: 2%;
     list-style-type: none;
     border-radius: 5px;
@@ -944,9 +952,12 @@ h1 {
   button {
     border: none;
     outline: none;
+    background-color: transparent;
 
     svg {
       font-size: 1.1rem;
+      transform: rotate(45deg);
+      color: brown;
       cursor: pointer;
     }
   }
@@ -1104,12 +1115,18 @@ h1 {
       button {
         border-radius: 5px;
         text-align: left;
-        padding: 5px 0 5px 6px;
+        padding: 6px 0 6px 6px;
         width: 200px;
         outline: none;
+        border: 1px solid grey;
       }
     }
   }
+}
+
+
+.signInMethods ul li:nth-last-child(1){
+  display: none;
 }
 
 .passwordExplain {
@@ -1193,22 +1210,25 @@ h1 {
 }
 
 .extra {
-  margin-bottom: 2%;
-
+  margin: 3% 0;
   div {
     display: flex;
     flex-direction: column;
+    button{
+      border-radius: 5px;
+      text-align: left;
+      max-width: 200px;
+      margin-bottom: 1%;
+      padding: 6px 0 6px 6px;
+      outline: none;
+      border: 1px solid grey;
+      a{
+        color: inherit;
+      }
+    }
   }
 }
 
-.extraBtn {
-  margin: 0.5% 0;
-  border-radius: 5px;
-  text-align: left;
-  padding: 5px 0 5px 6px;
-  width: 200px;
-  outline: none;
-}
 
 
 /* PLACE ITEM SINGLE */
@@ -1217,26 +1237,23 @@ h1 {
   width: 80%;
   display: block;
   margin: 0 auto;
-
   h2 {
     color: $MidnightBlue;
     font-weight: bold;
   }
-
   div {
     display: flex;
     flex-direction: row;
     margin-top: 1%;
-
     section {
       img {
         max-width: 500px;
+        min-width: 400px;
         border-radius: 15px;
-      }
 
+      }
       p {
         padding-left: 5%;
-
         span {
           color: $CornFlowerBlue;
           font-weight: bolder;
@@ -1262,7 +1279,6 @@ h1 {
   display: block;
 }
 
-
 .legalContainer {
   margin: 2% auto;
   max-width: 75%;
@@ -1284,7 +1300,6 @@ h1 {
   }
 }
 
-
 .MuiAppBar-colorPrimary {
   background-color: #9bb6e2 !important;
 }
@@ -1296,56 +1311,55 @@ h1 {
 
 /* HELP PAGE */
 
-.helpPagePara{
+.helpPagePara {
   text-align: center;
   margin-bottom: 5%;
 }
 
-.HelpFlex{
-display: flex;
-flex-wrap: nowrap;
+.HelpFlex {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.elevator{
+.elevator {
   border-radius: .28571429rem;
-    background: #fff;
-    -webkit-box-shadow: 0 1px 2px 0 rgba(34,36,38,.15), 0 0 0 1px rgba(34,36,38,.15);
-    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15), 0 0 0 1px rgba(34,36,38,.15);
-    width: 20%;
-    position: sticky;
-    height: 240px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    top: 4rem;
-    h2{
-      text-align: center;
-      font-weight: lighter;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15), 0 0 0 1px rgba(34, 36, 38, .15);
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15), 0 0 0 1px rgba(34, 36, 38, .15);
+  width: 20%;
+  position: sticky;
+  height: 240px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  top: 4rem;
+
+  h2 {
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  ul {
+    list-style-type: none !important;
+    margin-left: 4%;
+    padding: 0;
+
+    li {
+      margin: 2% 0;
     }
-      ul{
-        list-style-type: none!important;
-        margin-left: 4%;
-        padding: 0;
-li{
-  margin: 2% 0;
+  }
 }
-        }
 
-    }
-
-
-
-.addPlaceList{
-  li{
-    span{
+.addPlaceList {
+  li {
+    span {
       color: $Orange;
       font-weight: bolder;
     }
   }
 }
 
-
-.helpFrame{
+.helpFrame {
   width: 100%;
   max-width: 900px;
   display: block;
@@ -1354,15 +1368,15 @@ li{
   border-radius: 10px;
 }
 
-.placeCard{
+.placeCard {
   display: flex;
   flex-direction: row;
-  p{
+  p {
     margin-right: 10%;
     margin-top: 4%;
     text-align: justify;
   }
-  img{
+  img {
     width: 100%;
     height: auto;
   }
@@ -1370,13 +1384,15 @@ li{
 
 /* Accordion */
 
-.ui.styled.accordion{
+.ui.styled.accordion {
   width: 79%;
   margin-left: 1%;
 }
 
-.accordion, .ui, .styled{
-margin: 0% auto;
+.accordion,
+.ui,
+.styled {
+  margin: 0% auto;
 }
 
 
@@ -1484,18 +1500,14 @@ margin: 0% auto;
     width: 80%;
     margin: 0 auto;
     display: block;
-
     p {
       display: none;
     }
-
     form {
-
       input,
       textarea {
         width: 100%;
       }
-
       label {
         display: inline-block;
         text-align: left;
@@ -1526,20 +1538,20 @@ margin: 0% auto;
 /* HELP PAGE */
 
 @media only screen and (max-width: 900px) {
-.placeCard{
-  img{
-    display: none;
+  .placeCard {
+    img {
+      display: none;
+    }
   }
 }
 
-}
-
 @media only screen and (max-width: 800px) {
-.elevator{
-  display: none;
-}
-.ui.styled.accordion{
-  width: 100%;
-  margin-left: 0;
-}
+  .elevator {
+    display: none;
+  }
+
+  .ui.styled.accordion {
+    width: 100%;
+    margin-left: 0;
+  }
 }

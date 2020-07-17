@@ -96,8 +96,8 @@ export default class placeItem extends Component {
 
                        {place && (
                          <div className="placeItemContainer">
-                           <h2> {place.name}</h2>
-                           <hr />
+                           <h1> {place.name}</h1>
+                           {/* <hr /> */}
                            <div>
                              <section>
                                <img src={place.imageURL} alt="place illustration"/>

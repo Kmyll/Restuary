@@ -181,7 +181,7 @@ inputKeyDown = (e) => {
             <label>Add a picture</label>
 
             <FileUploader
-              accept="mage/*"
+              accept="image/*"
               name="image"
               storageRef={firebase.storage().ref('test')}
               onUploadStart={this.onUploadStart}

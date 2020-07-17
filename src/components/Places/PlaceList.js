@@ -59,6 +59,7 @@ class PlaceList extends Component {
 
     return (
       <div>
+        <h1>List of worldwide Places</h1>
         {loading ? (
           <div className="loader">
             <img src={dino} />
@@ -70,6 +71,7 @@ class PlaceList extends Component {
               type="text"
               onChange={this.searchHandler}
               value={term}
+              placeholder="Search (ex: Spain)"
             />
             <GoSearch />
           </form>
