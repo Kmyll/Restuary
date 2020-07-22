@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import dino from '../../assets/img/dino.gif';
 import { withFirebase } from '../Firebase';
 import firebase from '../Firestore';
-import { FcDeleteDatabase } from 'react-icons/fc';
+import { FaPlus } from 'react-icons/fa';
 import { GoSearch } from 'react-icons/go';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
+const notify = () => {
+  if (this.state.isVerified) {
+    toast.success("The user was successfully deleted. Thank you.");
+  } else {
+    toast.error("Something went wrong.Plase try again.");
+  }
+};
 
 function searchingFor(term) {
   return function (name) {
@@ -49,9 +61,19 @@ class PlaceList extends Component {
     db.collection('places').remove();
   };
 
-  /*  componentWillUnmount() {
-    this.unsubscribe();
-  } */
+  removePlace = () => {
+    console.log('mounted');
+    const db = firebase.firestore();
+      db.collection('places').doc(this.state.place.uid).delete().then(function(){
+        toast.success("✔️ The post was successfully sent. Thank you.");
+      }).catch(function(error) {
+        toast.danger("Something went wrong. Please try again.");
+      });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe();
+  }
 
   //Searchbar
   searchHandler = (event) => {
@@ -72,6 +94,7 @@ class PlaceList extends Component {
           <form className="Explore_searchBar">
             <input
               type="text"
+
               onChange={this.searchHandler}
               value={term}
             />
@@ -88,7 +111,7 @@ class PlaceList extends Component {
                 <td className="detailsBtn">Delete</td>
               </tr>
             </thead>
-            {places.map((place) => (
+            {places.filter(searchingFor(term)).map((place) => (
               <tbody key={place.uid}>
                 <tr>
                   <td>{place.name}</td>
@@ -96,7 +119,7 @@ class PlaceList extends Component {
                   <td>{place.continent}</td>
                   <td className="detailsBtn">
                     <button onClick={this.removePlace}>
-                      <FcDeleteDatabase />
+                      <FaPlus />
                     </button>
                   </td>
                 </tr>

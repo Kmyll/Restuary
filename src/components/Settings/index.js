@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {Link} from 'react-router-dom'
 import { FaKey } from 'react-icons/fa';
@@ -11,6 +12,7 @@ import {
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import Help from './help'
 
 const SIGN_IN_METHODS = [
   {
@@ -31,17 +33,15 @@ const SIGN_IN_METHODS = [
   },*/}
 ];
 
-const SettingsPage = ({}) => (
-  <AuthUserContext.Consumer>
-    {(authUser) => (
+const SettingsPage = ({authUser}) => (
       <div className="container settingsContainer">
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
+        <Extra/>
+
       </div>
-    )}
-  </AuthUserContext.Consumer>
 );
 
 class Extra extends Component {
@@ -53,10 +53,8 @@ class Extra extends Component {
           Information
         </h2>
         <div>
-          <Link to="./Information">
-            {' '}
-            <button className="extraBtn ">Information</button>
-          </Link>
+        <button><Link to='/Terms-and-conditions'>Terms and conditions</Link></button>
+        <button><Link to='/help'>User's guide</Link></button>
         </div>
       </section>
     );
@@ -148,8 +146,10 @@ class LoginManagementBase extends Component {
                   />
                 )}
               </li>
+
             );
           })}
+
         </ul>
         {error && error.message}
       </div>
@@ -247,9 +247,15 @@ class DefaultLoginToggle extends Component {
 
 const LoginManagement = withFirebase(LoginManagementBase);
 
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
+
 const condition = authUser => !!authUser;
 
 export default compose(
+  connect(mapStateToProps),
   withEmailVerification,
   withAuthorization(condition),
 )(SettingsPage);

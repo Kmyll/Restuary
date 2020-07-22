@@ -15,6 +15,7 @@ function searchingFor(term) {
       name.country.toLowerCase().includes(term.toLowerCase()) ||
       name.continent.toLowerCase().includes(term.toLowerCase()) ||
       name.name.toLowerCase().includes(term.toLowerCase()) ||
+
       !term
     );
   };
@@ -33,6 +34,7 @@ class PlaceList extends Component {
   componentDidMount() {
     const db = firebase.firestore();
     db.collection('places')
+    .orderBy("created", "desc")
       .get()
       .then((snapshot) => {
         const places = [];
@@ -57,6 +59,7 @@ class PlaceList extends Component {
 
     return (
       <div>
+        <h1>List of worldwide Places</h1>
         {loading ? (
           <div className="loader">
             <img src={dino} />
@@ -68,12 +71,13 @@ class PlaceList extends Component {
               type="text"
               onChange={this.searchHandler}
               value={term}
+              placeholder="Search (ex: Spain)"
             />
             <GoSearch />
           </form>
         )}
 
-        <ul className="adminListTable">
+        <ul className="adminListTable centerHomeContent">
           {this.state.places &&
             this.state.places
               .filter(searchingFor(term))
@@ -81,8 +85,6 @@ class PlaceList extends Component {
                 return (
                   <li key={place.uid}>
                     <img src={place.imageURL} />
-      
-
                     <p>
                       {' '}
                       <span className="bold">Name: </span>
@@ -93,22 +95,25 @@ class PlaceList extends Component {
                       <span className="bold">Country: </span>
                       {place.country}
                     </p>
-
                     <p>
                       {' '}
                       <span className="bold">Continent: </span>
                       {place.continent}
                     </p>
+
                     <div className="homePageHr"></div>
+                    <div className="homepageFooter">
+                    <p>{place.username}</p>
                     <Link
                       className="homeLink"
                       to={{
-                        pathname: `${ROUTES.HOME}/${place.uid}`,
+                        pathname: `${ROUTES.HOME}/${place.created.seconds}`,
                         state: { place },
                       }}
                     >
                       <p>Details...</p>
                     </Link>
+                    </div>
                   </li>
                 );
               })}

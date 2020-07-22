@@ -6,6 +6,7 @@ import * as ROUTES from '../../constants/routes';
 
 import forgotPassword from '../../assets/img/forgotPassword.png';
 import { FaLock } from 'react-icons/fa';
+import {BsShieldLockFill} from 'react-icons/bs'
 
 const PasswordForgetPage = () => (
   <div className="DisplayForgotPassword">
@@ -59,10 +60,7 @@ class PasswordForgetFormBase extends Component {
 
     return (
       <React.Fragment>
-        <h2 className="settingsh2">
-          {' '}
-          <FaLock /> Reset your password
-        </h2>
+        <h2 className="settingsh2"><BsShieldLockFill/> Reset your password</h2>
         <p className="passwordExplain">
           (Please choose this option if you don't remember your
           password)

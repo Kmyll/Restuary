@@ -28,6 +28,7 @@ SOMMAIRE
 10. ADMIN
 11. PROFILE
 12. SETTINGS
+13. HELPPAGE
 
 RESPONSIVE DESIGN
 
@@ -44,6 +45,7 @@ RESPONSIVE DESIGN
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
@@ -67,6 +69,7 @@ body {
   width: 70%;
   display: block;
   margin: 0 auto;
+  scroll-behavior: smooth;
 }
 
 .btn {
@@ -76,11 +79,16 @@ body {
   outline: none;
 }
 
+button{
+  cursor: pointer;
+}
+
 .loader {
   img {
     display: block;
     margin: 0 auto;
   }
+
   p {
     font-style: normal !important;
     font-size: 3rem !important;
@@ -89,6 +97,7 @@ body {
     margin-top: -3%;
   }
 }
+
 h2 {
   margin: calc(2rem - 0.14285714em) 0 1rem !important;
 }
@@ -102,6 +111,11 @@ h1 {
   margin-bottom: 3%;
 }
 
+.hide {
+  display: none;
+}
+
+
 /* 02. NAV */
 
 .burgerMenu {
@@ -111,6 +125,7 @@ h1 {
   line-height: 70px;
   color: $CornFlowerBlue;
 }
+
 .burgerToggle {
   display: none;
 }
@@ -118,6 +133,7 @@ h1 {
 .LogoHeader {
   flex-grow: 1;
 }
+
 .logo {
   max-width: 200px;
   flex-grow: 1;
@@ -137,6 +153,7 @@ h1 {
   li {
     margin: 0.5% 3%;
     list-style: none;
+
     a,
     .logOutBtn {
       text-decoration: none;
@@ -160,18 +177,19 @@ h1 {
 }
 
 
-.SignInOption{
+.SignInOption {
   text-align: center;
   margin: 8% auto 3% auto;
-  p{
- display: inline-block;
- color: #78a2e7;
- font-size: 1.5rem;
+
+  p {
+    display: inline-block;
+    color: #78a2e7;
+    font-size: 1.5rem;
 
   }
 }
 
-.SignInline{
+.SignInline {
   height: 1px;
   width: 150px;
   background-color: #78a2e7;
@@ -200,6 +218,7 @@ h1 {
     font-size: 3rem;
     margin-bottom: -6%;
     margin-top: 3%;
+
     span {
       font-size: 1.3rem;
       color: $CornFlowerBlue;
@@ -214,6 +233,7 @@ h1 {
   text-align: center;
   align-items: center;
   justify-content: space-evenly;
+
   div {
     margin-top: 2%;
     padding: 2%;
@@ -223,18 +243,21 @@ h1 {
       0 6px 6px rgba(0, 0, 0, 0.23);
   }
 }
+
 .cardPic {
   margin-top: 5%;
   max-height: 200px;
   grid-column-start: 2;
   grid-row-start: 2;
 }
+
 .sectionTitle {
   margin: 4% auto 5%;
   font-size: 2.5rem;
   text-align: center;
   color: $CornFlowerBlue;
 }
+
 .footer {
   width: 100%;
   margin-top: 3%;
@@ -246,6 +269,7 @@ h1 {
   background-color: white;
   border: none;
   outline: none;
+
   img {
     max-width: 300px;
     text-align: center;
@@ -267,22 +291,27 @@ h1 {
   justify-self: center;
   margin: 5% 3% 0 0;
 }
+
 .leftSection {
   justify-self: center;
+
   h1 {
     font-size: 2.5rem;
     text-align: center;
     margin-top: 100px;
     color: $CornFlowerBlue;
+
     svg {
       font-size: 3.5rem;
     }
   }
 }
+
 .signInForm {
   margin: 6% auto 10%;
   text-align: center;
   justify-self: center;
+
   input {
     margin: 2%;
     width: 300px;
@@ -292,10 +321,12 @@ h1 {
     padding: 2% 4%;
     outline: none;
   }
-  p{
+
+  p {
     color: darkred;
   }
 }
+
 .enterBtn {
   margin: 6% auto 10%;
   text-align: center;
@@ -314,7 +345,8 @@ h1 {
   display: flex;
   flex-direction: column;
   margin: 2% auto;
-  p{
+
+  p {
     text-align: center;
     color: darkred;
   }
@@ -324,9 +356,11 @@ h1 {
 .NoAccountPara {
   text-align: center;
 }
+
 .forgotPasswordPara {
   margin-top: 5%;
 }
+
 /* 05. REGISTER */
 
 .registerImg,
@@ -347,15 +381,19 @@ h1 {
   grid-template-columns: 50% 50%;
   text-align: center;
   align-items: center;
+
   div {
+
     h1,
     .icons {
       font-size: 2rem;
       color: $Orange;
     }
+
     form {
       width: 100%;
       justify-self: start;
+
       input {
         width: 300px;
         height: 40px;
@@ -366,6 +404,7 @@ h1 {
         outline: none;
         font-size: 1rem;
       }
+
       button {
         margin-top: 2%;
         width: 300px;
@@ -382,26 +421,31 @@ h1 {
 
 .emailConfirmationScreen {
   margin: 0 10%;
+
   h1 {
     margin-bottom: 0;
   }
+
   h4 {
     color: $MidnightBlue;
     font-size: 1.6rem;
     text-align: center;
   }
+
   img {
     max-width: 500px;
     float: right;
     clear: both;
     overflow: hidden;
   }
+
   p {
     margin: 4% 70% 5% 0;
     font-size: 1.4rem;
     line-height: 2rem;
     text-align: justify;
   }
+
   button {
     background-color: $CornFlowerBlue;
     color: white;
@@ -420,6 +464,7 @@ h1 {
 .forgotPasswordImg {
   max-width: 600px;
 }
+
 .DisplayForgotPassword {
   display: inline-grid;
 }
@@ -429,23 +474,27 @@ h1 {
 .addPlaceForm {
   text-align: center;
   margin-top: 3%;
+
   h1 {
     color: $CornFlowerBlue;
     margin-bottom: 2%;
     font-size: 2.5rem;
   }
+
   p {
     font-style: italic;
     color: darkgrey;
     margin-bottom: 3%;
   }
+
   form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    input {
-      width: 500px;
 
+    input,
+    select {
+      width: 500px;
       justify-content: flex-end;
       margin-left: 3%;
       margin-bottom: 1%;
@@ -453,7 +502,9 @@ h1 {
       outline: none;
       border: 1px solid #d2d2d2;
       border-radius: 5px;
+      background-color: white;
     }
+
     textarea {
       width: 500px;
       height: 100px;
@@ -465,23 +516,27 @@ h1 {
       border: 1px solid #d2d2d2;
       border-radius: 5px;
     }
-    .imageDisplay img {
-      max-width: 300px;
+
+    img {
+      max-width: 400px;
       height: auto;
       border-radius: 15px;
-      margin: 3% auto;
-      display: block;
+      align-items: center;
+      margin: 3% 0 3% 12%;
     }
+
     label {
       display: inline-block;
       width: 140px;
       text-align: right;
       vertical-align: middle;
     }
+
     .vertical_align {
       padding-top: 1%;
       vertical-align: top !important;
     }
+
     button {
       width: 200px;
       display: block;
@@ -494,17 +549,25 @@ h1 {
     }
   }
 }
+
 .DropImg {
   border: none !important;
 }
-.image img {
-  border-radius: 5px;
-  max-width: 300px;
-}
+
 
 .TextDisplay {
-  margin-left: 3%;
   font-size: 1.3rem;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tagInput {
+  box-shadow: none !important;
+  background: none !important;
+  padding: none !important;
+
 }
 
 /* EXPLORE PLACES */
@@ -513,24 +576,29 @@ h1 {
   width: 80%;
   display: block;
   margin: 0 auto;
+
   h1 {
     text-align: center;
     color: $CornFlowerBlue;
     font-size: 2.5rem;
   }
 }
+
 .inputContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+
   button {
     border: none;
     background-color: white;
+
     svg {
       font-size: 20px;
     }
   }
 }
+
 .SearchBar {
   width: 600px;
   height: 35px;
@@ -544,22 +612,23 @@ h1 {
 
 .exploreList {
   margin-top: 3%;
+
   h1 {
     margin-bottom: 5%;
   }
+
   ul {
     li {
-      background: linear-gradient(
-        90deg,
-        rgba(238, 243, 252, 0) 0%,
-        rgba(238, 243, 252, 0.8) 100%
-      );
+      background: linear-gradient(90deg,
+          rgba(238, 243, 252, 0) 0%,
+          rgba(238, 243, 252, 0.8) 100%);
       padding: 1% 2%;
       border-radius: 10px;
       list-style: none;
       margin: 25px 0;
       display: flex;
       align-items: center;
+
       p {
         font-size: 1.2rem;
         flex-grow: 1;
@@ -574,12 +643,15 @@ h1 {
   border-radius: 5px;
   margin-right: 15px;
 }
+
 .Explore_List_Arrow {
   display: flex;
   text-align: right;
   align-self: flex-end;
+
   button {
     background: transparent !important;
+
     svg {
       height: 1.5rem;
       width: 1.5rem;
@@ -591,6 +663,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
+
   input {
     border: 1px solid lightgray;
     width: 70%;
@@ -600,6 +673,7 @@ h1 {
     outline: none;
     padding: 1%;
   }
+
   svg {
     font-size: 1.3rem;
     margin-top: 5px;
@@ -608,7 +682,7 @@ h1 {
 
 /* Explore modal */
 
-.ui.modal > .content > .description {
+.ui.modal>.content>.description {
   display: flex !important;
 }
 
@@ -617,17 +691,20 @@ h1 {
     border-radius: 10px;
   }
 }
+
 .description {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.3rem;
+
   ul {
     vertical-align: middle;
     justify-content: center;
     align-items: center;
   }
 }
+
 .ModalPlane {
   transform: rotate(-45deg);
   margin-right: 3%;
@@ -637,9 +714,11 @@ h1 {
   margin: 0 !important;
   color: $CornFlowerBlue;
 }
+
 .modalLi {
   li {
     list-style: none;
+
     ::before {
       content: '\2022';
       color: $Orange;
@@ -647,6 +726,7 @@ h1 {
       width: 1.2em;
       margin-left: -1em;
     }
+
     span {
       font-weight: 800;
       color: $Orange;
@@ -697,17 +777,34 @@ h1 {
   overflow: hidden;
 }
 
+.homepageFooter {
+  display: flex;
+
+  p {
+    flex-grow: 0.9;
+    margin-bottom: 0% !important;
+  }
+}
+
+
 /* HOMEPAGE LIST DESIGN (delete previous in case list design is better. othersise delete below*/
 
+.centerHomeContent{
+  width: 73%!important;
+}
+
+
 .adminListTable {
-  width: 73%;
-  display: block;
+  width: 80%;
   margin: 1% auto;
   padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  margin-right: 11%;
   li {
+
     margin: 2%;
     list-style-type: none;
     border-radius: 5px;
@@ -715,17 +812,21 @@ h1 {
     transition: 0.3s;
     padding-bottom: 1%;
   }
+
   thead {
     border-bottom: 2px solid $CornFlowerBlue;
     margin-bottom: 2%;
+
     tr {
       padding: 2% 0;
+
       td {
         color: $CornFlowerBlue;
         font-size: 18px;
       }
     }
   }
+
   img {
     object-fit: cover;
     width: 250px;
@@ -735,8 +836,10 @@ h1 {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
+
   p {
     padding: 0 5%;
+
     span {
       font-weight: bold;
     }
@@ -749,6 +852,7 @@ h1 {
     margin: 0;
   }
 }
+
 .homePageHr {
   background-color: lightgray;
   width: 100%;
@@ -766,19 +870,23 @@ h1 {
 .adminImg {
   max-width: 600px;
 }
+
 .admin_container {
   margin: 2% 10%;
+
   h1 {
     text-align: center;
     font-size: 2.5rem;
     color: #79a2e7;
   }
+
   p {
     text-align: center;
     color: grey;
     font-style: italic;
     margin-bottom: 2%;
   }
+
   ul {
     li {
       span {
@@ -786,12 +894,15 @@ h1 {
       }
     }
   }
+
   section {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
     div {
       margin: 5%;
+
       button {
         margin: 15% 0;
         height: 100px;
@@ -808,6 +919,7 @@ h1 {
     }
   }
 }
+
 .UsersBtn {
   button {
     border: 3px solid $CornFlowerBlue;
@@ -815,6 +927,7 @@ h1 {
     font-size: 1rem;
     outline: none;
     cursor: pointer;
+
     &:hover {
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -822,6 +935,7 @@ h1 {
     }
   }
 }
+
 .placesBtn {
   button {
     font-size: 1rem;
@@ -830,6 +944,7 @@ h1 {
     border: 3px solid $CornFlowerBlue;
     outline: none;
     cursor: pointer;
+
     &:hover {
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -842,8 +957,12 @@ h1 {
   button {
     border: none;
     outline: none;
+    background-color: transparent;
+
     svg {
       font-size: 1.1rem;
+      transform: rotate(45deg);
+      color: brown;
       cursor: pointer;
     }
   }
@@ -858,15 +977,18 @@ h1 {
     td {
       min-width: 300px;
     }
+
     .detailsBtn {
       min-width: 100px !important;
     }
   }
 }
+
 .btnSendPassword {
   background-color: $CornFlowerBlue;
   color: white;
 }
+
 .btnDeleteUser,
 .deleteAccountBtn {
   background-color: #c23f3e;
@@ -876,11 +998,13 @@ h1 {
 .AdminUserSingle {
   div {
     margin-top: 3%;
+
     span {
-      margin: 4%;
+      margin: 2%;
     }
   }
 }
+
 .userAdminList {
   list-style-type: none;
   text-align: left;
@@ -898,6 +1022,7 @@ h1 {
   background-color: $CornFlowerBlue;
   color: white;
 }
+
 .BtnDeleteAccount {
   background-color: brown;
   color: white;
@@ -914,10 +1039,12 @@ h1 {
 .ui.secondary.pointing.menu .item {
   margin-top: 3%;
   width: 50%;
+
   .item {
     text-align: center !important;
   }
 }
+
 .ui.secondary.pointing.menu .active.item {
   text-align: center !important;
   align-items: center;
@@ -932,18 +1059,22 @@ h1 {
   border-radius: 50%;
   margin-right: 20px;
 }
+
 .header {
   display: flex;
   align-items: center;
 }
+
 .headerText {
   flex-direction: column;
 }
+
 .Profile_userName {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1%;
 }
+
 .settingsLinks {
   text-align: right;
 }
@@ -960,9 +1091,11 @@ h1 {
 .settingsContainer {
   margin-top: 3%;
 }
+
 .DisplayForgotPassword {
   margin: 2% 0;
 }
+
 .settingsh2 {
   color: $CornFlowerBlue;
 }
@@ -979,24 +1112,33 @@ h1 {
 .signInMethods {
   ul {
     padding: 0;
+
     li {
       list-style: none;
       margin: 1% 0;
+
       button {
         border-radius: 5px;
         text-align: left;
-        padding: 5px 0 5px 6px;
+        padding: 6px 0 6px 6px;
         width: 200px;
         outline: none;
+        border: 1px solid grey;
       }
     }
   }
+}
+
+
+.signInMethods ul li:nth-last-child(1){
+  display: none;
 }
 
 .passwordExplain {
   font-style: italic;
   color: grey;
 }
+
 .settingsInput {
   border: 1px solid grey;
   border-radius: 5px;
@@ -1006,19 +1148,23 @@ h1 {
   outline: none;
   margin: 1% 1% 1% 0;
 }
+
 .SettingsFlex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+
 .passwordForms {
   border-right: 1px solid grey;
   padding-right: 20%;
 }
+
 .settingsButtons {
   li {
     list-style: none;
+
     button {
       width: 100%;
       height: 30px;
@@ -1030,6 +1176,7 @@ h1 {
 }
 
 .profileInfos {
+
   input,
   textarea {
     border: 1px solid grey;
@@ -1041,6 +1188,7 @@ h1 {
     margin: 1% 1% 1% 0;
   }
 }
+
 .bioTextArea {
   height: 80px !important;
   resize: vertical;
@@ -1052,10 +1200,12 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   .profileInfos {
     padding-right: 20%;
   }
 }
+
 .deleteAccountBtn {
   width: 100%;
   height: 30px;
@@ -1065,20 +1215,25 @@ h1 {
 }
 
 .extra {
-  margin-bottom: 2%;
+  margin: 3% 0;
   div {
     display: flex;
     flex-direction: column;
+    button{
+      border-radius: 5px;
+      text-align: left;
+      max-width: 200px;
+      margin-bottom: 1%;
+      padding: 6px 0 6px 6px;
+      outline: none;
+      border: 1px solid grey;
+      a{
+        color: inherit;
+      }
+    }
   }
 }
-.extraBtn {
-  margin: 0.5% 0;
-  border-radius: 5px;
-  text-align: left;
-  padding: 5px 0 5px 6px;
-  width: 200px;
-  outline: none;
-}
+
 
 
 /* PLACE ITEM SINGLE */
@@ -1098,6 +1253,7 @@ h1 {
     section {
       img {
         max-width: 500px;
+        min-width: 400px;
         border-radius: 15px;
       }
       p {
@@ -1110,49 +1266,138 @@ h1 {
     }
   }
 }
+
 .ratingRadioButton {
   display: none;
 }
+
 .star {
   cursor: pointer;
 }
 
 /* LEGAL INFORMATION  */
 
-.LegalAppBar{
+.LegalAppBar {
   margin: 2% auto;
   max-width: 80%;
   display: block;
 }
 
-
-.legalContainer{
+.legalContainer {
   margin: 2% auto;
   max-width: 75%;
-  h1{
+
+  h1 {
     text-align: center;
     color: $CornFlowerBlue;
     font-size: 3rem;
   }
-  h2{
+
+  h2 {
     color: $Orange;
     font-size: 1.6rem;
-    margin-top: 5%!important;
+    margin-top: 5% !important;
   }
-  p{
+
+  p {
     text-align: justify;
   }
 }
 
-
-.MuiAppBar-colorPrimary{
-  background-color: #9bb6e2!important;
+.MuiAppBar-colorPrimary {
+  background-color: #9bb6e2 !important;
 }
 
-.PrivateTabIndicator-colorSecondary-67{
-  background-color: $MidnightBlue!important;
+.PrivateTabIndicator-colorSecondary-67 {
+  background-color: $MidnightBlue !important;
 }
 
+
+/* HELP PAGE */
+
+.helpPagePara {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.HelpFlex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.elevator {
+  border-radius: .28571429rem;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15), 0 0 0 1px rgba(34, 36, 38, .15);
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15), 0 0 0 1px rgba(34, 36, 38, .15);
+  width: 20%;
+  position: sticky;
+  height: 240px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  top: 4rem;
+
+  h2 {
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  ul {
+    list-style-type: none !important;
+    margin-left: 4%;
+    padding: 0;
+
+    li {
+      margin: 2% 0;
+    }
+  }
+}
+
+.addPlaceList {
+  li {
+    span {
+      color: $Orange;
+      font-weight: bolder;
+    }
+  }
+}
+
+.helpFrame {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 2% auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.placeCard {
+  display: flex;
+  flex-direction: row;
+  p {
+    margin-right: 10%;
+    margin-top: 4%;
+    text-align: justify;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Accordion */
+
+.ui.styled.accordion {
+  width: 79%;
+  margin-left: 1%;
+}
+
+.accordion,
+.ui,
+.styled {
+  margin: 0% auto;
+}
 
 
 
@@ -1164,6 +1409,7 @@ h1 {
   .cardPic {
     max-height: 115px;
   }
+
   .Presentation div {
     max-height: 200px;
   }
@@ -1173,6 +1419,7 @@ h1 {
   .Presentation {
     grid-template-columns: 70%;
   }
+
   .Presentation div {
     margin-top: 8%;
   }
@@ -1181,19 +1428,22 @@ h1 {
 /* 2. Homepage */
 @media only screen and (max-width: 1024px) {
   .adminListTable {
-    width: 85%;
+    width: 80%;
   }
 }
+
 @media only screen and (max-width: 414px) {
   .adminListTable {
     li {
       width: 100%;
     }
+
     img {
       width: 306px;
     }
   }
 }
+
 /* 3. Admin */
 
 @media only screen and (max-width: 1024px) {
@@ -1201,6 +1451,7 @@ h1 {
     max-width: 400px;
     margin-left: 20%;
   }
+
   .admin_container section div button {
     width: 250%;
     height: 75px;
@@ -1213,6 +1464,7 @@ h1 {
   .loginIllustration {
     display: none;
   }
+
   .loginSection {
     grid-template-columns: 80%;
   }
@@ -1225,19 +1477,22 @@ h1 {
     display: block;
     cursor: pointer;
   }
+
   .menuBurgerNav {
     display: none;
     flex-direction: column;
     text-align: center;
+
     li {
       margin: 2.5% 3%;
     }
   }
+
   .topNav {
     height: 60px;
   }
 
-  #toggle:checked + .topNav {
+  #toggle:checked+.topNav {
     display: block !important;
   }
 }
@@ -1249,7 +1504,6 @@ h1 {
     width: 80%;
     margin: 0 auto;
     display: block;
-
     p {
       display: none;
     }
@@ -1276,9 +1530,32 @@ h1 {
     width: 123%;
     display: block;
   }
-  .exploreList{
-    ul{
+
+  .exploreList {
+    ul {
       padding-left: 0;
     }
+  }
+}
+
+
+/* HELP PAGE */
+
+@media only screen and (max-width: 900px) {
+  .placeCard {
+    img {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .elevator {
+    display: none;
+  }
+
+  .ui.styled.accordion {
+    width: 100%;
+    margin-left: 0;
   }
 }

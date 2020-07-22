@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
@@ -9,17 +10,14 @@ import * as ROLES from '../../constants/roles';
 import Logo from '../../assets/img/logo.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-const Navigation = () => (
-  <AuthUserContext.Consumer>
-    {(authUser) =>
-      authUser ? (
+const Navigation = ({authUser}) =>
+authUser ? (
         <NavigationAuth authUser={authUser} />
       ) : (
         <NavigationNonAuth />
-      )
-    }
-  </AuthUserContext.Consumer>
-);
+      );
+
+
 
 const NavigationAuth = ({ authUser }) => (
   <ul className="topNav">
@@ -75,4 +73,8 @@ const NavigationNonAuth = () => (
   </ul>
 );
 
-export default Navigation;
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
+
+export default connect(mapStateToProps)(Navigation);

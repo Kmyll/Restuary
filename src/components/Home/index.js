@@ -8,7 +8,6 @@ import * as ROUTES from '../../constants/routes';
 
 const HomePage = () => (
   <div>
-    <h1>Homepage</h1>
     <Switch>
       <Route exact path={ROUTES.HOME_DETAILS} component={PlaceItem} />
       <Route exact path={ROUTES.HOME} component={PlaceList} />
