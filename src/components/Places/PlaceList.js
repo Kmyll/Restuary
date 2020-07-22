@@ -77,7 +77,7 @@ class PlaceList extends Component {
           </form>
         )}
 
-        <ul className="adminListTable">
+        <ul className="adminListTable centerHomeContent">
           {this.state.places &&
             this.state.places
               .filter(searchingFor(term))
