@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { compose } from 'recompose';
-
 import { withAuthorization, withEmailVerification } from '../Session';
 import { PlaceList, PlaceItem } from '../Places';
 import * as ROUTES from '../../constants/routes';

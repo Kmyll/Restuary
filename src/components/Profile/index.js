@@ -1,128 +1,62 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
-import FileUploader from 'react-firebase-file-uploader';
-import { GoPlus } from 'react-icons/go';
-import { withAuthorization, withEmailVerification } from '../Session';
+import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom'
+import { FaKey } from 'react-icons/fa';
+import { IoMdHelpCircleOutline } from 'react-icons/io';
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification,
+} from '../Session';
+import { withFirebase } from '../Firebase';
+import { PasswordForgetForm } from '../PasswordForget';
+import PasswordChangeForm from '../PasswordChange';
 
-toast.configure();
+const SettingsPage = ({authUser}) => (
+  <div className="container settingsContainer">
+    <h1>Account: {authUser.email}</h1>
+    <h1>Account: {authUser.username}</h1>
 
-const notify = () => {
-  toast.success('New profile saved!', {
-    position: toast.POSITION_TOP_RIGHT,
-  });
-};
+  </div>
+);
 
-class Edit extends Component {
+class Profile extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+
     this.state = {
-      username: '',
-      bio: '',
-      image: '',
-      imageURL: '',
-    };
-  }
 
-  onChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+        activeSignInMethods: [],
+        error: null,
 
-  handleUploadSuccess = (filename) => {
-    this.setState(
-      {
-        image: filename,
-      },
-      () => {
-        console.log('hello', this.state);
-        firebase
-          .storage()
-          .ref('avatar')
-          .child(filename)
-          .getDownloadURL()
-          .then((url) =>
-            this.setState({
-              imageURL: url,
-            }),
-          );
-      },
-    );
-  };
+    }
+    }
 
-  onSubmit = (event, authUser) => {
-    event.preventDefault();
-    event.target.reset();
-    console.log(this.state);
-    this.props.firebase.users().push({
-      image: this.state.imageURL,
-      username: this.state.username,
-      bio: this.state.bio,
-    });
-
-    this.setState({
-      image: '',
-      username: '',
-      bio: '',
-      description: '',
-      rating: '',
-    });
-  };
 
   render() {
-    console.log('propsEdit', this.props);
-    console.log('state', this.state);
-    const { error } = this.state;
-    const { username, bio } = this.props;
-
+    console.log(this.props)
     return (
-      <div className="addPlaceForm">
-        <h1>
-          <GoPlus /> Modify your profile
-        </h1>
-        <form onSubmit={this.onSubmit}>
-          <div className="block">
-            <label>Add a profile picture</label>
-            <FileUploader
-              className="DropImg"
-              accept="image/*"
-              name="image"
-              storageRef={firebase.storage().ref('avatar')}
-              onUploadSuccess={this.handleUploadSuccess}
-            />
-          </div>
-          <div className="block">
-            <label>Username</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="block">
-            <label className="vertical_align">Description</label>
-            <textarea
-              type="text"
-              name="bio"
-              placeholder="Tell us a bit more about yourself"
-              onChange={this.onChange}
-            />
-          </div>
-
-          <button type="submit">Save</button>
-          {error && <p>{error.message}</p>}
-        </form>
+      <div>
+<h1>Hello</h1>
       </div>
-    );
+    )
   }
 }
 
 
-const condition = (authUser) => !!authUser;
+const LoginManagement = withFirebase(Profile);
+
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
+
+const condition = authUser => !!authUser;
 
 export default compose(
+  connect(mapStateToProps),
   withEmailVerification,
   withAuthorization(condition),
-)(Edit);
+)(SettingsPage);
+

@@ -229,6 +229,10 @@ inputKeyDown = (e) => {
 
 
             <div className="block">
+
+
+
+
           <label>Continent</label>
         <select value={this.state.continent} onChange={this.handleChange} >
         <option value="Africa">Africa</option>

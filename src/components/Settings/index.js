@@ -13,6 +13,7 @@ import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 import Help from './help'
+import ChangeProfile from './changeProfile'
 
 const SIGN_IN_METHODS = [
   {
@@ -40,9 +41,19 @@ const SettingsPage = ({authUser}) => (
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
         <Extra/>
+        <ModifyProfile/>
 
       </div>
 );
+
+
+class ModifyProfile extends Component{
+render(){
+  return(
+    <Link to ="/change-profile"><button>Modify Profile</button></Link>
+  )
+}
+}
 
 class Extra extends Component {
   render() {

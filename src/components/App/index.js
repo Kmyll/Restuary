@@ -11,14 +11,15 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import AdminPlacesPage from '../AdminPlaces';
 import AddPlacePage from '../AddPlace';
-import ProfilePage from '../Profile';
+
 import SettingsPage from '../Settings';
 import WelcomePage from '../Welcome';
 import AdministrationPage from '../Administration';
 import ExplorePage from '../Explore';
 import LegalPage from '../Legal'
 import HelpPage from '../Settings/help'
-
+import ChangeProfilePage from '../Settings/changeProfile'
+import ProfilePage from '../Profile'
 
 
 import * as ROUTES from '../../constants/routes';
@@ -39,6 +40,7 @@ const App = () => (
       <Route path={ROUTES.EXPLORE} component={ExplorePage} />
       <Route path={ROUTES.LEGAL} component={LegalPage} />
       <Route path={ROUTES.HELP} component={HelpPage} />
+      <Route path={ROUTES.CHANGE_PROFILE} component={ChangeProfilePage} />
       <Route
         path={ROUTES.ADMINISTRATION}
         component={AdministrationPage}

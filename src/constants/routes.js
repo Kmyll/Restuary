@@ -17,3 +17,4 @@ export const ADMINISTRATION = '/Administration';
 export const EXPLORE = '/Explore';
 export const LEGAL='/Terms-and-conditions'
 export const HELP='/Help'
+export const CHANGE_PROFILE='/change-profile'
