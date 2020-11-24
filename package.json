@@ -46,6 +46,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "react-select-country": "0.0.15",
     "sass": "^1.26.5"
   },

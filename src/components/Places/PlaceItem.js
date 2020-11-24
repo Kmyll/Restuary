@@ -1,127 +1,99 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import firebase from '../Firestore';
 
-
 export default class placeItem extends Component {
-                 constructor(props) {
-                   super(props);
+	constructor (props) {
+		super(props);
 
-                   this.state = {
-                     place: null,
-                     loading: false,
-                     ...props.location.state,
-                   };
-                 }
+		this.state = {
+			place   : null,
+			loading : false,
+			...props.location.state
+		};
+	}
 
-                 componentDidMount() {
-
-                     /*   if (!this.places.length) {
+	componentDidMount () {
+		/*   if (!this.places.length) {
           this.setState({ loading: true });
         } */
+		const db = firebase.firestore();
+		db
+			.collection('places')
+			.get()
+			.then(async (snapshot) => {
+				const places = [];
+				snapshot.forEach((doc) => places.push(doc.data()));
 
-                   console.log('mounted');
-                   const db = firebase.firestore();
-                   db.collection('places')
-                     .get()
-                     .then(async (snapshot) => {
-                       const places = [];
-                       snapshot.forEach((doc) =>
-                         places.push(doc.data()),
-                       );
+				//places[0].commentaires // tableau de DocumentReference
+				for await (let place of places) {
+					if (place.commentaires) {
+						// S'il y a des commentaires pour cette place là
+						place.commentaires = await Promise.all(
+							place.commentaires.map((commRef) => commRef.get().then((comm) => comm.data()))
+						);
+					}
+				}
 
-                       //console.log('places', places);
+				this.setState({
+					places  : places,
+					loading : false
+				});
+			})
+			.catch((error) => console.log(error));
+	}
 
-                       //places[0].commentaires // tableau de DocumentReference
-                       for await (let place of places) {
-                         if (place.commentaires) {
-                           // S'il y a des commentaires pour cette place là
-                           place.commentaires = await Promise.all(
-                             place.commentaires.map((commRef) =>
-                               commRef
-                                 .get()
-                                 .then((comm) => comm.data()),
-                             ),
-                           );
-                         }
-                       }
+	//Comments
+	addCommentToPlace1 = async () => {
+		const newCommentRef = await firebase.firestore().collection('commentaires').add({
+			id      : Date.now(),
+			message : 'Hello sweetie !'
+		});
 
-                       console.log('places', places);
-                       this.setState({
-                         places: places,
-                         loading: false,
-                       });
-                     })
-                     .catch((error) => console.log(error));
-                 }
+		const placeID = 'thKu6QtG6lbLOHIuDqnQ'; // en admettant que tu l'ai déjà sous la main
+		const place = await firebase.firestore().collection('places').doc(placeID).get().then((p) => p.data());
 
-                 //Comments
-                 addCommentToPlace1 = async () => {
-                   const newCommentRef = await firebase
-                     .firestore()
-                     .collection('commentaires')
-                     .add({
-                       id: Date.now(),
-                       message: 'Hello sweetie !',
-                     });
+		if (place.commentaires instanceof Array) {
+			place.commentaires.push(newCommentRef);
+		} else {
+			place.commentaires = [
+				newCommentRef
+			];
+		}
 
-                   const placeID = 'thKu6QtG6lbLOHIuDqnQ'; // en admettant que tu l'ai déjà sous la main
-                   const place = await firebase
-                     .firestore()
-                     .collection('places')
-                     .doc(placeID)
-                     .get()
-                     .then((p) => p.data());
+		await firebase.firestore().collection('places').doc(placeID).set(place);
+	};
 
-                   if (place.commentaires instanceof Array) {
-                     place.commentaires.push(newCommentRef);
-                   } else {
-                     place.commentaires = [newCommentRef];
-                   }
+	render () {
+		const { place, loading } = this.state;
+		return (
+			<React.Fragment>
+				{loading && <div>Loading ...</div>}
 
-                   await firebase
-                     .firestore()
-                     .collection('places')
-                     .doc(placeID)
-                     .set(place);
-                   console.log('commentaire ajouté !');
-                   console.log(placeID)
-                 };
-
-                 render() {
-                   const { place, loading } = this.state;
-                   return (
-                     <React.Fragment>
-
-                       {loading && <div>Loading ...</div>}
-
-                       {place && (
-                         <div className="placeItemContainer">
-                           <h1> {place.name}</h1>
-                           {/* <hr /> */}
-                           <div>
-                             <section>
-                               <img src={place.imageURL} alt="place illustration"/>
-                             </section>
-                             <section className="TextDisplay">
-                               <p>
-                                 <span>Country:</span> {place.country}
-                               </p>
-                               <p>
-                                 <span>Region:</span> {place.region}
-                               </p>
-                               <p>
-                                 <span>Continent:</span>{' '}
-                                 {place.continent}
-                               </p>
-                               <p>
-                                 <span>Description:</span>{' '}
-                                 {place.description}
-                               </p>
-                               <p>
-                                 <span>Added by:</span>{' '}
-                                 {place.username}
-                               </p>
-                         {  /* <button
+				{place && (
+					<div className='placeItemContainer'>
+						<h1> {place.name}</h1>
+						{/* <hr /> */}
+						<div>
+							<section>
+								<img src={place.imageURL} alt='place illustration' />
+							</section>
+							<section className='TextDisplay'>
+								<p>
+									<span>Country:</span> {place.country}
+								</p>
+								<p>
+									<span>Region:</span> {place.region}
+								</p>
+								<p>
+									<span>Continent:</span> {place.continent}
+								</p>
+								<p>
+									<span>Description:</span> {place.description}
+								</p>
+								<p>
+									<span>Added by:</span> {place.username}
+								</p>
+								{/* <button
                                  onClick={() =>
                                    this.addCommentToPlace1()
                                  }
@@ -142,11 +114,11 @@ export default class placeItem extends Component {
                                      },
                                    )}
                                </li>*/}
-                             </section>
-                           </div>
-                         </div>
-                       )}
-                     </React.Fragment>
-                   );
-                 }
-               }
+							</section>
+						</div>
+					</div>
+				)}
+			</React.Fragment>
+		);
+	}
+}
